@@ -1,0 +1,39 @@
+@import "../../../../scss/bootstrap-variables";
+
+.text-editable {
+    display: inline-block;
+}
+
+.editing {
+    .control {
+        &:hover {
+            color: $brand-success;
+        }
+    }
+}
+
+.content {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.edit {
+    display: inline-block;
+
+    input {
+        font-size: inherit;
+    }
+}
+
+.control {
+    font-size: 0.7em;
+    position: relative;
+    top: -0.15em;
+    color: #ccc;
+    transition: all 200ms ease-out;
+    cursor: pointer;
+
+    &:hover {
+        color: #333;
+    }
+}

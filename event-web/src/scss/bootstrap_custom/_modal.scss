@@ -1,0 +1,36 @@
+@each $variant, $color in (primary: $brand-primary, secondary: $gray-lighter, success: $brand-success, info: $brand-info, warning: $brand-warning, danger: $brand-danger) {
+    .modal-#{$variant} {
+
+        .modal-content {
+            border-color: $color;
+        }
+
+        .modal-header {
+            color: #fff;
+            background-color: $color;
+        }
+    }
+}
+
+.ob-panel-design {
+    top: 15px;
+    bottom: 15px;
+    left: 30px;
+    right: 30px;
+    overflow-y: hidden!important;
+
+    .modal-dialog {
+        max-width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+
+    .modal-content {
+        height: 100%;
+    }
+
+    .modal-body {
+        height: calc(100% - 67px);
+        padding: 0;
+    }
+}

@@ -1,0 +1,41 @@
+@import "../../../scss/bootstrap-variables";
+
+.campaigns-wrapper {
+    .navbar {
+        margin-bottom: 30px;
+        height: 60px;
+        line-height: 60px;
+
+        .nav-item {
+            form {
+                height: 100%;
+
+                input {
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+.list-campaigns {
+    .card {
+        position: relative;
+
+        .status {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 5px 15px;
+            background-color: #b0b7b8;
+            text-transform: capitalize;
+            color: #fff;
+            border-bottom-right-radius: 15px;
+
+            &.active {
+                background-color: $brand-primary;
+            }
+        }
+    }
+}

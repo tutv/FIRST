@@ -1,0 +1,24 @@
+.loading-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 999;
+
+    .base-middle {
+        height: 100%;
+
+        .middle {
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 20px;
+        }
+    }
+}

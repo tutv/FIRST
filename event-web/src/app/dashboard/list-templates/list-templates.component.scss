@@ -1,0 +1,14 @@
+@import "../../../scss/bootstrap-variables";
+
+.template {
+    cursor: pointer;
+
+    &:hover {
+        border-color: $brand-primary;
+
+        .card-footer {
+            background-color: $brand-primary;
+            color: #fff;
+        }
+    }
+}

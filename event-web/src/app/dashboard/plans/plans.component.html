@@ -1,0 +1,39 @@
+<div class="plans-wrapper" *ngIf="app">
+    <div class="text-center mt-2 mb-3">
+        <h1 class="h2">{{app.name}}</h1>
+        <p class="description">{{app.description}}</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4" *ngFor="let plan of app.plans">
+            <div class="card" [ngClass]="plan.popular ? 'card-accent-primary' : ''">
+                <div class="card-header h2 text-center">
+                    {{plan.name}}
+                </div>
+                <div class="card-block">
+                    <div class="overview text-center mb-3">
+                        <h4 class="card-title">{{plan.price}}$</h4>
+
+                        <p class="card-text description">{{plan.description}}</p>
+
+                        <button class="btn" (click)="onSelectPlan(plan)"
+                                [disabled]="!plan.price"
+                                [ngClass]="plan.price ? 'btn-primary' : 'btn-secondary'">Get {{plan.name}}
+                        </button>
+                    </div>
+
+                    <div class="features">
+                        <div class="title h3">{{plan.name}} Includes</div>
+                        <div class="sub-title mb-1 pb-1">{{plan.titleFeatures}}</div>
+
+                        <ul class="list-features">
+                            <li *ngFor="let feature of plan.features">{{feature}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mk-checkout #checkout></mk-checkout>

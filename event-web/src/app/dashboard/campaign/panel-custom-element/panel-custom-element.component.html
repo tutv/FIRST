@@ -1,0 +1,56 @@
+<div class="panel-wrapper" *ngIf="element">
+
+    <div class="section" *ngIf="element.content !== false">
+        <h5>Content</h5>
+        <app-text-control *ngIf="!isHtmlEditor()"
+                          [content]="element.content"
+                          (onUpdate)="onUpdateContent($event)">
+        </app-text-control>
+
+        <app-html-control *ngIf="isHtmlEditor()"
+                          [enable]="isHtmlEditor()"
+                          [content]="element.content"
+                          (onUpdate)="onUpdateContent($event)">
+        </app-html-control>
+    </div>
+
+    <div class="section" *ngIf="styleControls.length">
+        <h5>Styles</h5>
+        <div class="list-controls">
+            <div class="control-wrapper" *ngFor="let control of styleControls">
+                <div [ngSwitch]="control.type">
+                    <app-color-control *ngSwitchCase="'color'"
+                                       [name]="control.key"
+                                       (onChange)="onUpdateStyle($event)"
+                                       [value]="control.value">
+                    </app-color-control>
+                    <app-size-control *ngSwitchCase="'size'"
+                                      [name]="control.key"
+                                      (onChange)="onUpdateStyle($event)"
+                                      [value]="control.value">
+                    </app-size-control>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" *ngIf="attributeControls.length">
+        <h5>Attributes</h5>
+        <div class="list-controls">
+            <div class="control-wrapper" *ngFor="let ctrl of attributeControls">
+                <div [ngSwitch]="ctrl.type">
+                    <app-text-control *ngSwitchCase="'text'"
+                                      [label]="ctrl.key"
+                                      (onUpdate)="onUpdateAttribute(ctrl.key, $event)"
+                                      [content]="ctrl.value">
+                    </app-text-control>
+
+                    <app-image-control *ngSwitchCase="'image'"
+                                       (urlChange)="onUpdateAttribute(ctrl.key, $event)"
+                                       [url]="ctrl.value">
+                    </app-image-control>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

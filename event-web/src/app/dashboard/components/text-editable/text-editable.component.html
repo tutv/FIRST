@@ -1,0 +1,12 @@
+<div class="text-editable" [ngClass]="isEditing ? 'editing' : ''">
+    <span class="content" [hidden]="isEditing">{{content}}</span>
+    <span class="edit" [hidden]="!isEditing">
+        <input [size]="content?.length ? content.length : 1" type="text"
+               (keypress)="onKeyPress($event)"
+               class="form-control" name="content"
+               title="Content" [(ngModel)]="content">
+    </span>
+    <span class="control" (click)="toggle()">
+        <i class="fa fa-{{isEditing ? 'check' : 'pencil'}}" aria-hidden="true"></i>
+    </span>
+</div>

@@ -1,0 +1,13 @@
+<ul class="list-group list-group-flush">
+    <li *ngIf="!lists.length" class="list-group-item">Click button (+ New) to create a email sync.</li>
+
+    <li class="list-group-item email-sync" *ngFor="let list of lists">
+        <span>{{list.linkedAccount_.host}}</span>
+        <span><{{list.linkedAccount_.email}}></span>
+        <span>{{list.listId}}</span>
+
+        <button type="button" class="close" aria-label="Close" (click)="onClickDelete(list._id)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </li>
+</ul>

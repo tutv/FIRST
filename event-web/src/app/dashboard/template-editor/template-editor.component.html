@@ -1,0 +1,40 @@
+<header class="preview-header navbar">
+    <label class="px-1" *ngIf="label">{{label}}</label>
+
+    <ul class="nav navbar-nav float-xs-right">
+        <li class="nav-item px-1">
+            <mk-button-fullscreen></mk-button-fullscreen>
+        </li>
+
+        <li class="nav-item px-1">
+            <button class="btn btn-secondary" (click)="onChooseTemplate($event)">
+                <i class="fa fa-object-group" aria-hidden="true"></i>
+            </button>
+        </li>
+    </ul>
+</header>
+
+<div class="design-area">
+    <div class="editor-wrapper">
+        <div class="editor" *ngIf="element">
+            <div class="header">
+                <h4>Edit {{element.name}}</h4>
+
+                <div class="actions">
+                    <div class="action reset" (click)="panel.onReset($event)" title="Reset element">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <app-panel-custom-element [element]="element" #panel></app-panel-custom-element>
+        </div>
+    </div>
+
+    <div class="preview-wrapper">
+        <div class="iframe">
+            <iframe *ngIf="previewSrv.getSourcePreview()" id="{{previewID}}" [src]="previewSrv.getSourcePreview()"
+                    frameborder="0"></iframe>
+        </div>
+    </div>
+</div>

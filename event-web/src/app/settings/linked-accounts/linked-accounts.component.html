@@ -1,0 +1,32 @@
+<div class="card">
+    <div class="card-header h3">Linked Accounts</div>
+
+    <div class="card-block">
+        <div class="card-title h5">Authorized Accounts</div>
+        <ul class="accounts mb-3">
+            <li class="account mb-1" *ngFor="let account of accounts" [ngClass]="account.host | lowercase">
+                <img class="logo" [src]="'assets/images/brands/' + getIntegration(account.host)?.logo"
+                     alt="{{account.host}}">
+                <span>{{account.email}}</span>
+
+                <button *ngIf="account.host.toLowerCase() != 'shopify'" class="close remove"
+                        (click)="onClickRemoveAccount($event, account._id)"><span
+                        aria-hidden="true">&times;</span></button>
+            </li>
+        </ul>
+
+        <div class="card-title h5">Available Integrations</div>
+        <div class="card-text mb-1">Select a service to link your accounts.</div>
+
+        <ul class="integrations">
+            <li class="integration" *ngFor="let integrateion of getIntegrationsAvailable()">
+                <a href="#" (click)="onClickIntegrate($event, integrateion.host)" class="base-middle">
+                    <img class="logo"
+                         [src]="'assets/images/brands/' + integrateion.logo"
+                         alt="{{integrateion.name}}">
+                    <span class="name">{{integrateion.name}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

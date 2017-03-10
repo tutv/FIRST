@@ -1,0 +1,15 @@
+<div class="form-group row ob-form-group">
+    <div class="col-sm-6">
+        <label>{{name}}</label>
+    </div>
+
+    <div class="col-sm-6 wrapper-input">
+        <input class="form-control" [(colorPicker)]="value"
+               (colorPickerChange)="onChangeValue($event)"
+               [style.background-color]="value"
+               [style.color]="invertColor()"
+               [value]="value"
+               [cpAlphaChannel]="'disabled'"
+               [cpOutputFormat]="'hex'" title="color"/>
+    </div>
+</div>

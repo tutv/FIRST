@@ -1,0 +1,20 @@
+.overview {
+    .description {
+        min-height: 50px;
+    }
+}
+
+.features {
+    .sub-title {
+        border-bottom: 1px solid #eee;
+    }
+}
+
+.list-features {
+    margin: 0;
+    padding-left: 20px;
+
+    li {
+        padding: 10px 0;
+    }
+}

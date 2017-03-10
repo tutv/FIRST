@@ -1,0 +1,22 @@
+<header class="navbar mb-3">
+    <div class="container-fluid">
+        <button class="navbar-toggler hidden-lg-up" type="button" mobile-nav-toggle>&#9776;</button>
+        <a class="navbar-brand" [routerLink]="['/']"></a>
+
+        <app-list-navs-dashboard></app-list-navs-dashboard>
+
+        <ul class="nav navbar-nav float-xs-right">
+            <app-dropdown-account></app-dropdown-account>
+        </ul>
+    </div>
+</header>
+
+<!-- Main content -->
+<main class="main">
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+    <!-- /.conainer-fluid -->
+</main>
+
+<mk-footer></mk-footer>

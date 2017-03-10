@@ -1,0 +1,40 @@
+.account {
+    list-style: none;
+
+    background-color: #eee;
+    padding: 10px;
+
+    .remove {
+        display: none;
+        line-height: 27px;
+    }
+
+    &:hover {
+        .remove {
+            display: inline-block;
+        }
+    }
+}
+
+.integrations, .accounts {
+    padding-left: 0;
+}
+
+.logo {
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.integration {
+    list-style: none;
+
+    a {
+        display: inline-block;
+        padding: 5px 0;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

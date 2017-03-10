@@ -1,0 +1,43 @@
+<div bsModal #modal="bs-modal" [config]="{backdrop: 'static'}" class="ob-panel-design modal fade" tabindex="-1"
+     role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title float-xs-left">Email editor</h4>
+
+                <div class="float-xs-right">
+                    <button *ngIf="email"
+                            class="btn btn-secondary mx-1" (click)="onSendTestEmail($event)"
+                            data-placement="left"
+                            tooltip="Email will be sent to {{email}}">Send Test
+                    </button>
+                    <button class="btn btn-default" (click)="hide()">Cancel</button>
+                    <button class="btn btn-danger" (click)="onClickSaveChange()">Save changes</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="email-subject p-1">
+                    <label>Subject</label>
+                    <input
+                            [(ngModel)]="subject"
+                            class="form-control"
+                            title="Subject"
+                            name="subject"
+                            type="text">
+                </div>
+
+                <mk-template-editor
+                        #template_editor
+                        *ngIf="modal.isShown"
+                        [label]="'Email Body'"
+                        [id]="'email-auto-response'"
+                        [cssUrl]="null"
+                        [(html)]="body"></mk-template-editor>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mk-list-email-templates></mk-list-email-templates>

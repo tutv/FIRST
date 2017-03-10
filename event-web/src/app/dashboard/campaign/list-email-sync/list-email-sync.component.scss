@@ -1,0 +1,11 @@
+.close {
+    display: none;
+}
+
+.email-sync {
+    &:hover {
+        .close {
+            display: inline-block;
+        }
+    }
+}

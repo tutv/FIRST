@@ -1,0 +1,50 @@
+label {
+    display: block;
+}
+
+.preview {
+    width: 100px;
+    display: inline-block;
+    padding: 10px 10px 10px 0;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.upload-zone {
+    position: relative;
+
+    &.pending {
+        border-color: #aaa;
+
+        .loading {
+            display: block;
+        }
+    }
+
+    .loading {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        background-color: rgba(0, 0, 0, 0.19);
+        bottom: 0;
+        text-align: center;
+
+        &:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+            margin-right: -0.25em;
+        }
+
+        .fa {
+            vertical-align: middle;
+        }
+    }
+}

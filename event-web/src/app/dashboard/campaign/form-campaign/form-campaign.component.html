@@ -1,0 +1,60 @@
+<div>
+    <div class="card">
+        <div class="card-header h5">
+            Validation
+        </div>
+        <div class="card-block">
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <h6 class="card-title">Unique Email</h6>
+                    <p>Limit one signup per email address.</p>
+                </div>
+                <div class="col-md-3 base-middle">
+                    <div class="align-middle text-center">
+                        <app-input-switch [(value)]="settings.uniqueEmail"
+                                          (valueChange)="onUpdate()"></app-input-switch>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <h6 class="card-title">Supply limit</h6>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-3 base-middle">
+                    <div class="align-middle text-center">
+                        <app-input-switch [(value)]="settings.limited" (valueChange)="onUpdate()"></app-input-switch>
+
+                        <div [hidden]="!settings.limited">
+                            <input type="number"
+                                   mkExtraInput
+                                   (valueChange)="onUpdate()"
+                                   [(ngModel)]="settings.limitNumber"
+                                   name="timeOnPageValue" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card email-sync">
+        <div class="card-header base-middle">
+            <h5 class="h5 mb-0 float-xs-left">Email sync</h5>
+
+            <ul class="nav navbar-nav float-xs-right">
+                <li class="nav-item">
+                    <button class="btn btn-primary" (click)="new_email_sync.show()"><i class="fa fa-plus"></i> New
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <mk-list-email-sync [campaignId]="campaignId" #list_email_sync></mk-list-email-sync>
+    </div>
+
+    <mk-new-email-sync #new_email_sync [campaignId]="campaignId"
+                       (done)="list_email_sync.fetchList()"></mk-new-email-sync>
+</div>

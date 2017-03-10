@@ -1,0 +1,8 @@
+<label class="switch switch-text switch-primary mb-0" [ngClass]="extraClass">
+    <input type="checkbox" class="switch-input"
+           name="input"
+           (change)="onChange($event)"
+           [(ngModel)]="value">
+    <span class="switch-label" data-on="On" data-off="Off"></span>
+    <span class="switch-handle"></span>
+</label>

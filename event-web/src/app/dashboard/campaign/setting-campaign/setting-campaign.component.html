@@ -1,0 +1,238 @@
+<form *ngIf="settings">
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Exit intent</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <app-input-switch [(value)]="settings.exitIntentEnabled"
+                                          (valueChange)="onUpdate()"></app-input-switch>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Device targeting</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <select [(ngModel)]="settings.device"
+                                class="form-control"
+                                (ngModelChange)="onUpdate()" name="device" title="Device">
+                            <option value="all">All</option>
+                            <option value="desktop">Desktop</option>
+                            <option value="mobile">Mobile</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Time on page enable</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <app-input-switch [(value)]="settings.timeOnPageEnabled"
+                                          (valueChange)="onUpdate()"></app-input-switch>
+
+                        <div [hidden]="!settings.timeOnPageEnabled">
+                            <div class="input-group">
+                                <input type="number"
+                                       mkExtraInput
+                                       (valueChange)="onUpdate()"
+                                       [(ngModel)]="settings.timeOnPageValue"
+                                       name="timeOnPageValue" class="form-control"
+                                       placeholder="Time on page value">
+                                <span class="input-group-addon">ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Time Idle Enabled</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <app-input-switch [(value)]="settings.timeIdleEnabled"
+                                          (valueChange)="onUpdate()"></app-input-switch>
+
+                        <div [hidden]="!settings.timeIdleEnabled">
+                            <div class="input-group">
+                                <input type="number"
+                                       mkExtraInput
+                                       (valueChange)="onUpdate()"
+                                       [(ngModel)]="settings.timeIdleValue"
+                                       name="timeIdleValue"
+                                       class="form-control"
+                                       placeholder="Time on page value">
+                                <span class="input-group-addon">ms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Scroll Enable</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <app-input-switch [(value)]="settings.scrollEnabled"
+                                          (valueChange)="onUpdate()"></app-input-switch>
+
+                        <div [hidden]="!settings.scrollEnabled">
+                            <div class="input-group">
+                                <input type="number"
+                                       max="100"
+                                       min="0"
+                                       mkExtraInput
+                                       (valueChange)="onUpdate()"
+                                       [(ngModel)]="settings.scrollValue"
+                                       name="scrollValue"
+                                       class="form-control"
+                                       placeholder="Time on page value">
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Page View Enabled</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <app-input-switch [(value)]="settings.pageViewEnabled"
+                                          (valueChange)="onUpdate()"></app-input-switch>
+
+                        <div [hidden]="!settings.pageViewEnabled">
+                            <div class="input-group">
+                                <input type="number"
+                                       min="0"
+                                       mkExtraInput
+                                       (valueChange)="onUpdate()"
+                                       [(ngModel)]="settings.numberOfPage"
+                                       name="numberOfPage"
+                                       class="form-control"
+                                       placeholder="Time on page value">
+                                <span class="input-group-addon">page{{settings.numberOfPage > 1 ? 's' : ''}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Aggressive Mode</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <app-input-switch [(value)]="settings.aggressiveMode"
+                                          (valueChange)="onUpdate()"></app-input-switch>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Popup Delay</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <div class="input-group">
+                            <input type="number"
+                                   min="0"
+                                   mkExtraInput
+                                   (valueChange)="onUpdate()"
+                                   [(ngModel)]="settings.popupDelay"
+                                   name="popupDelay" class="form-control"
+                                   placeholder="Time on page value">
+                            <span class="input-group-addon">ms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4 class="card-title">Cookie Expire</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore.</p>
+                </div>
+                <div class="col-md-4 base-middle">
+                    <div class="align-middle text-center">
+                        <div class="input-group">
+                            <input type="number"
+                                   mkExtraInput
+                                   (valueChange)="onUpdate()"
+                                   min="0"
+                                   [(ngModel)]="settings.cookieExpire"
+                                   name="cookieExpire" class="form-control"
+                                   placeholder="Time on page value">
+                            <span class="input-group-addon">day{{settings.cookieExpire > 1 ? 's' : ''}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

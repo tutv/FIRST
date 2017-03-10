@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">Before Signup</div>
+
+    <div class="card-block">
+        <button class="btn btn-success" (click)="onOpenListTemplates()" *ngIf="!displays.screens">Choose a template
+        </button>
+
+        <app-before-signup
+                [template]="screens.before" #beforeSignup></app-before-signup>
+    </div>
+</div>
+
+<div class="card" *ngIf="screens.after">
+    <div class="card-header">After Signup</div>
+
+    <div class="card-block">
+        <app-after-signup
+                [template]="screens.after" #afterSignup></app-after-signup>
+    </div>
+
+</div>
+
+<mk-list-templates #list_templates [type]="type"></mk-list-templates>

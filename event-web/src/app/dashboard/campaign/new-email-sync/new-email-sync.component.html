@@ -1,0 +1,47 @@
+<div bsModal #modal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1"
+     role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <mk-loading [toggle]="loading"></mk-loading>
+
+            <div class="modal-header">
+                <h4 class="modal-title">New Email Sync</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Select a account (<a [routerLink]="['/settings/linked-accounts']" target="_blank">?</a>)</label>
+                        <select name="account" class="form-control" title="Account"
+                                (change)="onChangeAccount($event)"
+                                [(ngModel)]="emailSync.account">
+                            <option value="">Choose an account</option>
+                            <option *ngFor="let account of accounts" [value]="account._id">
+                                {{account.email}}
+                                <{{account.host}}>
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" *ngIf="emailSync.account">
+                        <label>Select a list</label>
+
+                        <select name="list" class="form-control" title="List" [(ngModel)]="emailSync.list"
+                                (change)="onChangeList($event)">
+                            <option value="">Choose a list</option>
+                            <option *ngFor="let list of lists" [value]="list.id">{{list.name}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <div class="float-xs-right">
+                    <button class="btn btn-default" (click)="hide()">Cancel</button>
+                    <button class="btn btn-danger" (click)="onClickCreate($event)" [disabled]="disabled">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

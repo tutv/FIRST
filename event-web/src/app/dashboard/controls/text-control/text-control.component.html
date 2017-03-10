@@ -1,0 +1,8 @@
+<div>
+    <label *ngIf="label">{{label}}</label>
+    <textarea class="form-control"
+              id="{{elementId}}"
+              title="Text editor"
+              [(ngModel)]="content"
+              (ngModelChange)="onChangeContent($event)"></textarea>
+</div>

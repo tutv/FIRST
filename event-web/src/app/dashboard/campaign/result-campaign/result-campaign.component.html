@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="card-header h5 base-middle">
+        <span class="title">Contacts</span>
+
+        <ul class="nav nav-pills card-header-pills float-xs-right">
+            <li class="nav-item" *ngIf="results.length">
+                <a class="active nav-link export-csv" (click)="onClickDownloadCSV($event)">CSV Download <i
+                        class="fa fa-cloud-download"></i></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="list-results list-group list-group-flush">
+        <div class="result list-group-item" *ngFor="let data of results">
+            {{data?.customerData?.email}}
+        </div>
+
+        <div class="card-block text-center no-result" *ngIf="!results.length">No result</div>
+    </div>
+</div>

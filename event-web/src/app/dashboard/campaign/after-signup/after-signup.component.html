@@ -1,0 +1,25 @@
+<button class="btn btn-success" (click)="show()">Click to edit</button>
+
+<div bsModal #modal="bs-modal" [config]="{backdrop: 'static'}" class="ob-panel-design modal fade" tabindex="-1"
+     role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">After Signup</h4>
+
+                <div class="pull-right">
+                    <button class="btn btn-default" (click)="hide()">Cancel</button>
+                    <button class="btn btn-danger" (click)="onClickSaveChanges()">Save changes</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <mk-template-editor *ngIf="open"
+                                    [id]="'after-signup'"
+                                    [cssUrl]="template.cssUrl"
+                                    [html]="template.html"></mk-template-editor>
+            </div>
+        </div>
+    </div>
+</div>

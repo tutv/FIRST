@@ -1,0 +1,34 @@
+<div bsModal #modal="bs-modal" [config]="{backdrop: 'static'}" class="ob-panel-design modal fade" tabindex="-1"
+     role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Click to choose template</h4>
+
+                <div class="pull-right">
+                    <button class="btn btn-default" (click)="modal.hide()" [disabled]="loading">Cancel</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="templates p-1">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let template of templates"
+                             (click)="onClickChooseTemplate(template._id)">
+                            <div class="card template">
+                                <img class="card-img-top img-fluid" [src]="template.screenshot" alt="Screenshot">
+
+                                <div class="card-footer">
+                                    <div class="title">{{template.name}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <mk-loading [toggle]="loading"></mk-loading>
+            </div>
+        </div>
+    </div>
+</div>

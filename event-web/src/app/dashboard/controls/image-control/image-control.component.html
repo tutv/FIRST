@@ -1,0 +1,20 @@
+<div class="image-control">
+    <label>Image</label>
+
+    <div class="preview">
+        <img *ngIf="url" [src]="url" alt="Image">
+    </div>
+
+    <div class="upload-zone" [ngClass]="pending ? 'pending' : ''">
+        <div class="loading">
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </div>
+        <image-upload
+                [url]="urlUpload"
+                (onFileUploadFinish)="onUploadFinish($event)"
+                (isPending)="onPending($event)"
+                [preview]="false"
+                [buttonCaption]="'Select'"
+                [dropBoxMessage]="'Or drop image here'"></image-upload>
+    </div>
+</div>

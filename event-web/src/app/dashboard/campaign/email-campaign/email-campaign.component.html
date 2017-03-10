@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header">
+        <div class="title float-xs-left">Auto response</div>
+
+        <app-input-switch [extraClass]="''" [(value)]="autoResponse.active"
+                          (valueChange)="onToggle()"></app-input-switch>
+    </div>
+
+    <div class="card-block" *ngIf="autoResponse.active">
+        <div>
+            <button class="btn btn-success"
+                    (click)="email_editor.open(autoResponse.subject, autoResponse.body, user.email)">
+                Click to edit
+            </button>
+        </div>
+    </div>
+</div>
+
+<mk-email-editor #email_editor
+                 (sendEmail)="onSendTestEmail($event)"
+                 (update)="onSaveChanges($event)"></mk-email-editor>

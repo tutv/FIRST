@@ -1,0 +1,33 @@
+<div bsModal #modal="bs-modal" class="modal fade" [class.processing]="processing" tabindex="-1"
+     role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" *ngIf="plan">
+            <mk-loading [toggle]="processing"></mk-loading>
+
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Upgrade - {{plan.name}} Plan</h4>
+            </div>
+            <div class="modal-body">
+                <div class="package">
+                    <h3 class="h6">Subscribe to the {{plan.name}} Plan</h3>
+                    <div class="price">{{plan.price}}$</div>
+                </div>
+
+                <div class="alert alert-info" role="alert">
+                    Your Shopify account will be billed the above amount.
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="float-xs-left">
+                    <button class="btn btn-default" (click)="hide()">Cancel</button>
+                </div>
+                <div class="float-xs-right">
+                    <button class="btn btn-danger" (click)="onClickConfirm($event)">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

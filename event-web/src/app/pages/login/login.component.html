@@ -1,0 +1,81 @@
+<div class="container d-table">
+    <div class="d-100vh-va-middle">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card-group">
+                    <div class="card p-2">
+                        <div class="card-block">
+                            <form novalidate #f="ngForm" (submit)="onSubmit($event)">
+                                <h1>Login</h1>
+                                <p class="text-muted">Sign In to your account</p>
+                                <div class="form-group"
+                                     [ngClass]="(email.errors && (email.dirty || email.touched)) ? 'has-danger' : ''">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="icon-user"></i>
+                                        </span>
+                                        <input type="email"
+                                               pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$"
+                                               class="form-control"
+                                               placeholder="Email"
+                                               name="email"
+                                               [(ngModel)]="user.email"
+                                               #email="ngModel"
+                                               required>
+                                    </div>
+
+                                    <div class="form-control-feedback"
+                                         *ngIf="(email.errors && (email.dirty || email.touched))">
+                                        Email is required and format should be <i>example@marketify.com</i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-2"
+                                     [ngClass]="(password.errors && (password.dirty || password.touched)) ? 'has-danger' : ''">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="icon-lock"></i>
+                                        </span>
+                                        <input type="password"
+                                               class="form-control"
+                                               placeholder="Password"
+                                               name="password"
+                                               #password="ngModel"
+                                               [(ngModel)]="user.password"
+                                               required
+                                        >
+                                    </div>
+
+                                    <div class="form-control-feedback"
+                                         *ngIf="(password.errors && (password.dirty || password.touched))">
+                                        <div *ngIf="password.errors?.required">Password is required</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button class="btn btn-block btn-social btn-facebook">
+                                                Sign in with Facebook
+                                            </button>
+                                        </div>
+
+                                        <div class="col-xs-6">
+                                            <button type="submit"
+                                                    class="btn btn-primary px-2"
+                                                    [disabled]="!f.valid">
+                                                Login
+                                            </button>
+                                        </div>
+                                        <div class="col-xs-6 text-xs-right">
+                                            <a class="btn btn-link px-0" [routerLink]="['/forgot-password']">Forgot
+                                                password?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
