@@ -29,8 +29,8 @@ import {FooterComponent} from "./shared/footer/footer.component";
 import {AppService} from "./services/app.service";
 import {SidebarSettingsComponent} from "./settings/sidebar-settings/sidebar-settings.component";
 import {SharedModule} from "./shared/shared.module";
-
-import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
+import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
+import {EventService} from "./dashboard/services/event.service";
 
 const myFirebaseConfig = {
     apiKey: "AIzaSyARwPaIyEUEfckXV1Ijmp3GDR3aal5AFog",
@@ -80,6 +80,7 @@ const myFirebaseAuthConfig = {
         NotifyService,
         AuthService,
         AuthGuardService,
+        EventService,
         {
             provide: LocationStrategy,
             useClass: PathLocationStrategy

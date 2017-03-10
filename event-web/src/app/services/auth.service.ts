@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {StorageService} from "./storage.service";
 import {Subject} from "rxjs";
 import {Router} from "@angular/router";
+import {EventService} from "../dashboard/services/event.service";
 
 @Injectable()
 export class AuthService {
@@ -12,6 +13,7 @@ export class AuthService {
     public onLogin = this.$login.asObservable();
 
     constructor(private storageSrv: StorageService,
+                private eventSrv: EventService,
                 private router: Router) {
         this.onInvalidToken
             .subscribe(
@@ -39,6 +41,18 @@ export class AuthService {
                     this.storageSrv.set('returnUrl', false);
                 }
             );
+
+        this.eventSrv.on('logout')
+            .subscribe(
+                () => {
+                    this.logoutDone();
+                }
+            );
+    }
+
+    logoutDone() {
+        this.storageSrv.deleteAll();
+        this.router.navigate(['/login']);
     }
 
     reLogin() {

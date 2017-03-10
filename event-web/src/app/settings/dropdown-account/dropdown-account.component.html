@@ -5,12 +5,6 @@
         <span class="hidden-md-down">Hi {{name()}}</span>
     </a>
     <div dropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="simple-dropdown">
-        <span class="dropdown-item text-primary" *ngIf="business()"><i class="fa fa-briefcase"></i> {{business()?.name}}</span>
-        <a *ngIf="canChangeBusiness()" class="dropdown-item text-secondary" [routerLink]="['/a/business']">
-            <i class="fa fa-refresh"></i> Change business
-        </a>
-        <div class="divider dropdown-divider"></div>
-
         <a class="dropdown-item" [routerLink]="['/settings']"><i class="fa fa-wrench"></i> Settings</a>
         <a class="dropdown-item"><i class="fa fa-life-ring"></i> Help Docs</a>
         <div class="divider dropdown-divider"></div>

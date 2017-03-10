@@ -1,8 +1,10 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {UserService} from "../../services/user.service";
 import {StorageService} from "../../services/storage.service";
 import {Router} from "@angular/router";
 import {NavDropdownDirective} from "../../shared/nav-dropdown.directive";
+import {AngularFireAuth} from "angularfire2";
+import {EventService} from "../../dashboard/services/event.service";
 
 @Component({
     selector: 'app-dropdown-account',
@@ -11,9 +13,9 @@ import {NavDropdownDirective} from "../../shared/nav-dropdown.directive";
     providers: [UserService, NavDropdownDirective]
 })
 export class DropdownAccountComponent implements OnInit {
-    constructor(private userSrv: UserService,
-                private storageSrv: StorageService,
-                private router: Router) {
+    constructor(private eventSrv: EventService,
+                private fireAuth: AngularFireAuth,
+                private storageSrv: StorageService) {
     }
 
     ngOnInit() {
@@ -25,22 +27,12 @@ export class DropdownAccountComponent implements OnInit {
     }
 
     logout() {
-        this.router.navigate(['/']);
-
-        this.userSrv
-            .logout()
-            .subscribe(
-                data => {
-                    this.storageSrv.deleteAll();
-                },
-                error => {
-                    this.storageSrv.deleteAll();
+        this.fireAuth.logout()
+            .then(
+                () => {
+                    this.eventSrv.emit('logout');
                 }
             );
-    }
-
-    public business() {
-        return this.storageSrv.get('business');
     }
 
     public user() {
@@ -53,16 +45,13 @@ export class DropdownAccountComponent implements OnInit {
             return;
         }
 
+        if (user.displayName) {
+            return user.displayName;
+        }
+
         let email = user.email;
         email = email.replace(/@.+/ig, '');
 
         return email;
-    }
-
-    public canChangeBusiness(): boolean {
-        let user = this.user();
-        let businesses = user.businesses || [];
-
-        return (businesses.length > 1);
     }
 }
