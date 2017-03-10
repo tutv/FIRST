@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost:6789",
+    "target": "https://event.edoo.vn",
     "secure": true,
     "pathRewrite": {
       "^/api": ""
