@@ -42,7 +42,7 @@ gulp.task('fix404', ['build'], function () {
 });
 
 gulp.task('deploy', ['fix404'], shell.task([
-    'git add *',
+    'git add .',
     'git commit -am "Deploy"',
     'ggp',
     'echo "Deploy done!"'
