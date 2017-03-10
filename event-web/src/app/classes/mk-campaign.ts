@@ -1,5 +1,4 @@
 export class MkCampaign {
-    _id: string;
     name: string;
     configs: any;
     status: string;

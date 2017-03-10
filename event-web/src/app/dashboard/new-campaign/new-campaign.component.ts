@@ -14,17 +14,13 @@ export class NewCampaignComponent implements OnInit, OnChanges {
     @Input() public toggle: boolean = false;
     @ViewChild('modal') public modal: ModalDirective;
 
-    private campaign: any = {
+    private event: any = {
         name: '',
-        business: '',
-        type: 'collect'
     };
 
     constructor(private campaignSrv: CampaignService,
                 private storageSrv: StorageService,
                 private router: Router) {
-        let business = this.storageSrv.get('business');
-        this.campaign.business = business._id || false;
     }
 
     onSubmit() {
@@ -47,20 +43,11 @@ export class NewCampaignComponent implements OnInit, OnChanges {
     }
 
     returnDefault() {
-        this.campaign.name = '';
+        this.event.name = '';
         this.modal.hide();
     }
 
     createCampaign() {
-        this.campaignSrv.create(this.campaign)
-            .subscribe(
-                response => {
-                    this.returnDefault();
-
-                    let campaign = response.data;
-                    this.router.navigate(['/a/campaigns/', campaign._id]);
-                }
-            );
     }
 
 }

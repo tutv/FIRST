@@ -1,7 +1,6 @@
-import {Component, OnInit, OnDestroy} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../../services/user.service";
 import {StorageService} from "../../services/storage.service";
-import {Router} from "@angular/router";
 import {NavDropdownDirective} from "../../shared/nav-dropdown.directive";
 import {AngularFireAuth} from "angularfire2";
 import {EventService} from "../../dashboard/services/event.service";
