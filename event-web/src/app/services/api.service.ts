@@ -151,4 +151,8 @@ export class ApiService {
             );
     }
 
+    public getUrl(path: string) {
+        return this.BASE_URL + path;
+    }
+
 }

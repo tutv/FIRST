@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
-    host: 'https://marketify.co',
-    preview: 'https://preview.marketify.co',
-    api: '/api'
+    host: 'https://web.edoo.vn',
+    preview: '',
+    api: 'https://event.edoo.vn',
 };

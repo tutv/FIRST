@@ -3,6 +3,7 @@ import {UserService} from "../../services/user.service";
 import {Router} from "@angular/router";
 import {StorageService} from "../../services/storage.service";
 import {AuthService} from "../../services/auth.service";
+import {ApiService} from "../../services/api.service";
 
 @Component({
     selector: 'app-login',
@@ -11,18 +12,13 @@ import {AuthService} from "../../services/auth.service";
     providers: [UserService]
 })
 export class LoginComponent implements OnInit {
-    public user: any = {
-        email: '',
-        password: ''
-    };
-
-
+    public facebook: string = '';
 
     constructor(private userSrv: UserService,
                 private storage: StorageService,
                 private authSrv: AuthService,
+                private apiSrv: ApiService,
                 private router: Router) {
-        this.checkIsLoggedIn();
     }
 
     private checkIsLoggedIn() {
@@ -32,23 +28,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit() {
-    }
-
-    onSubmit(event: Event): void {
-        event.preventDefault();
-
-        this.login();
-    }
-
-    login() {
-        this.userSrv
-            .login(this.user.email, this.user.password)
-            .subscribe(
-                (response) => {
-                    let data = response.data;
-
-                    this.authSrv.$login.next(data);
-                }
-            );
+        this.checkIsLoggedIn();
+        this.facebook = this.apiSrv.getUrl('/auth/fb');
     }
 }

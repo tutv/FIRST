@@ -5,7 +5,7 @@
 
 export const environment = {
     production: false,
-    host: 'http://localhost:4200',
+    host: 'https://web.edoo.vn',
     preview: 'http://localhost:1235',
-    api: '/api',
+    api: 'https://event.edoo.vn',
 };
