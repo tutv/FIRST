@@ -47,3 +47,11 @@ gulp.task('deploy', ['fix404'], shell.task([
     'git push --all',
     'echo "Deploy done!"'
 ]));
+
+gulp.task('commit', function () {
+    shell.task([
+        'git add .',
+        'git commit -m "Hello commit"',
+        'ggp'
+    ]);
+});
