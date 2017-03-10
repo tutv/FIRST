@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {UserService} from "../../services/user.service";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
     selector: 'mk-login-token',
@@ -16,6 +17,7 @@ export class LoginTokenComponent implements OnInit {
 
     constructor(private activatedRoute: ActivatedRoute,
                 private userSrv: UserService,
+                private storageSrv: StorageService,
                 private router: Router) {
     }
 
@@ -34,6 +36,7 @@ export class LoginTokenComponent implements OnInit {
             .subscribe(
                 token => {
                     this.token = token;
+                    this.storageSrv.setToken(token);
                     this.fetch();
                 }
             );

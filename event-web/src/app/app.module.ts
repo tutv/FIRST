@@ -30,8 +30,24 @@ import {AppService} from "./services/app.service";
 import {SidebarSettingsComponent} from "./settings/sidebar-settings/sidebar-settings.component";
 import {SharedModule} from "./shared/shared.module";
 
+import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
+
+const myFirebaseConfig = {
+    apiKey: "AIzaSyARwPaIyEUEfckXV1Ijmp3GDR3aal5AFog",
+    authDomain: "event-f2831.firebaseapp.com",
+    databaseURL: "https://event-f2831.firebaseio.com",
+    storageBucket: "event-f2831.appspot.com",
+    messagingSenderId: "237982710017"
+};
+
+const myFirebaseAuthConfig = {
+    provider: AuthProviders.Facebook,
+    method: AuthMethods.Redirect
+};
+
 @NgModule({
     imports: [
+        AngularFireModule.initializeApp(myFirebaseConfig, myFirebaseAuthConfig),
         BrowserModule,
         AppRoutingModule,
         HttpModule,

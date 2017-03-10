@@ -13,58 +13,14 @@ import {Title} from "@angular/platform-browser";
 export class CampaignsComponent implements OnInit {
     @ViewChild('formCreate') public formCreate: NewCampaignComponent;
 
-    private businessId: string = '';
-    private listCampaigns: Array<any> = [];
-    private querySearch: string = '';
 
     constructor(private campaignSrv: CampaignService,
                 private title: Title,
                 private storageSrv: StorageService) {
     }
 
-    onOpenCreateForm() {
-        this.formCreate.modal.show();
-    }
-
     ngOnInit() {
-        this.fetchCurrentBusiness();
-        this.fetchListCampaigns();
-        this.title.setTitle('Campaigns');
-    }
-
-    fetchCurrentBusiness() {
-        let business = this.storageSrv.get('business');
-        this.businessId = business._id || false;
-    }
-
-    fetchListCampaigns() {
-        this.campaignSrv
-            .list(this.businessId)
-            .subscribe(
-                response => {
-                    this.listCampaigns = response.data;
-                }
-            );
-    }
-
-    campaignsFiltered() {
-        if (!this.querySearch.length) {
-            return this.listCampaigns;
-        }
-
-        return this.listCampaigns
-            .filter(
-                campaign => {
-                    if (!campaign.name) {
-                        return false;
-                    }
-
-                    let query = this.querySearch.toLowerCase();
-                    let name = campaign.name.toLowerCase();
-
-                    return name.indexOf(query) !== -1;
-                }
-            )
+        this.title.setTitle('Events');
     }
 
 }

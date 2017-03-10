@@ -4,6 +4,8 @@
             <div class="col-md-6 offset-md-3">
                 <div class="card-group">
                     <div class="card p-2">
+                        <mk-loading [toggle]="loading"></mk-loading>
+
                         <div class="card-block">
                             <form novalidate #f="ngForm">
                                 <h1>Login</h1>
@@ -12,9 +14,10 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <a [href]="facebook" class="btn btn-block btn-social btn-facebook">
+                                            <button (click)="onClickLogin($event)"
+                                                    class="btn btn-block btn-social btn-facebook">
                                                 Sign in with Facebook
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

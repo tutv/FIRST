@@ -1,18 +1,20 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
-import {ApiService} from "../../services/api.service";
+import {AngularFireAuth, FirebaseAuthState} from "angularfire2";
+import {StorageService} from "../../services/storage.service";
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    public facebook: string = '';
+    private loading: boolean = true;
 
     constructor(private authSrv: AuthService,
-                private apiSrv: ApiService,
+                private fireAuth: AngularFireAuth,
+                private storageSrv: StorageService,
                 private router: Router) {
     }
 
@@ -24,6 +26,26 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.checkIsLoggedIn();
-        this.facebook = this.apiSrv.getUrl('/auth/fb');
+
+        this.fireAuth.subscribe(
+            (auth: FirebaseAuthState) => {
+                if (!auth) {
+                    this.loading = false;
+                    return;
+                }
+
+                let user = auth.auth;
+                let {email, displayName, photoURL, refreshToken} = user;
+
+                let profile = {email, displayName, photoURL};
+                this.storageSrv.setToken(refreshToken);
+                this.storageSrv.setCurrentUser(profile);
+                this.router.navigate(['/a']);
+            }
+        )
+    }
+
+    onClickLogin() {
+        this.fireAuth.login();
     }
 }

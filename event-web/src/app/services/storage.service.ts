@@ -72,4 +72,8 @@ export class StorageService {
     getCurrentUser(): MkUser {
         return this.get('profile') || false;
     }
+
+    setCurrentUser(data: any): void {
+        this.set('profile', data);
+    }
 }
