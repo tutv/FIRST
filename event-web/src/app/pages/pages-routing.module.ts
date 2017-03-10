@@ -8,6 +8,7 @@ import {Page404Component} from "./page-404/page-404.component";
 import {RegisterComponent} from "./register/register.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+import {LoginTokenComponent} from "./login-token/login-token.component";
 
 const routes: Routes = [
     {
@@ -37,6 +38,10 @@ const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'auth/:token',
+        component: LoginTokenComponent
     },
     {
         path: '**',

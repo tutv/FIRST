@@ -10,6 +10,7 @@ import {RegisterComponent} from "./register/register.component";
 import {FormsModule} from "@angular/forms";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+import {LoginTokenComponent} from "./login-token/login-token.component";
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import {ResetPasswordComponent} from "./reset-password/reset-password.component"
         RegisterComponent,
         Page404Component,
         ForgotPasswordComponent,
-        ResetPasswordComponent
+        ResetPasswordComponent,
+        LoginTokenComponent
     ]
 })
 export class PagesModule {
