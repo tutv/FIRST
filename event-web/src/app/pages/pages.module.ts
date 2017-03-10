@@ -11,12 +11,14 @@ import {FormsModule} from "@angular/forms";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 import {LoginTokenComponent} from "./login-token/login-token.component";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
     imports: [
         CommonModule,
         HomeRoutingModule,
-        FormsModule
+        FormsModule,
+        SharedModule
     ],
     declarations: [
         HomePageComponent,
