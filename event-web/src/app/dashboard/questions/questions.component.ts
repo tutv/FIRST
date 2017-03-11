@@ -34,12 +34,38 @@ export class QuestionsComponent implements OnInit {
     }
 
     onClickPushQuestion($event: Event, question: MkQuestion) {
+        this.viewQuestion(question);
         this.pushQuestion(question);
+    }
+
+    onClickViewResult($event: Event, question: MkQuestion) {
+        this.viewQuestion(question);
+    }
+
+    viewQuestion(question: MkQuestion) {
+        let path = 'events/' + this.eventId + '/questions/' + question.$key;
+        this.realtimeQuestion.open(path);
     }
 
     pushQuestion(question: MkQuestion) {
         let path = 'events/' + this.eventId + '/questions/' + question.$key;
-        this.realtimeQuestion.open(path);
+
+        let question_id = question.$key;
+        let event_id = this.eventId;
+        let as1 = question.as1;
+        let as2 = question.as2;
+        let as3 = question.as3;
+        let as4 = question.as4;
+
+        let title = 'Câu hỏi nhanh';
+        let content = question.content;
+
+        this.campaignSrv.pushQuestion({event_id, question_id, title, content, as1, as2, as3, as4})
+            .subscribe(
+                (response) => {
+                    console.log(response);
+                }
+            );
     }
 
     fetchQuestions() {

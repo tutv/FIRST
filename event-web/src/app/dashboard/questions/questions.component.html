@@ -1,11 +1,12 @@
 <div class="questions">
-    <div class="question" *ngFor="let question of questions">
+    <div class="question my-2" *ngFor="let question of questions">
         <h3 class="h5">{{question.content}}
 
             <span class="close float-xs-right">&times;</span>
         </h3>
 
-        <button class="btn btn-primary btn-sm" (click)="onClickPushQuestion($event, question)">Gửi</button>
+        <button class="btn btn-primary btn-sm" (click)="onClickPushQuestion($event, question)">Gửi và xem</button>
+        <button class="btn btn-secondary btn-sm" (click)="onClickViewResult($event, question)">Xem kết quả</button>
     </div>
 </div>
 

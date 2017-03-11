@@ -54,6 +54,16 @@ export class CampaignService {
         return this.firebaseDB.object(questionPaths + '/' + key);
     }
 
+    public pushQuestion(data) {
+        let args = {
+            method: 'POST',
+            url: '/postquestion',
+            data
+        };
+
+        return this.apiSrv.request(args);
+    }
+
     public deleteC(id: string): Observable<any> {
         let args = {
             method: 'DELETE',

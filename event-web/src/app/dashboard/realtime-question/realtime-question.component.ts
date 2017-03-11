@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, OnDestroy} from '@angular/core';
 import {ModalDirective} from "ng2-bootstrap";
 import {CampaignService} from "../services/campaign.service";
 import {EventService} from "../services/event.service";
@@ -10,18 +10,15 @@ import {HelperService} from "../../services/helper.service";
     styleUrls: ['./realtime-question.component.scss'],
     providers: [CampaignService, HelperService]
 })
-export class RealtimeQuestionComponent implements OnInit {
+export class RealtimeQuestionComponent implements OnInit, OnDestroy {
     public barChartOptions: any = {
         responsive: false
     };
 
-    public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    public barChartLabels: string[] = [];
     public barChartType: string = 'bar';
     public barChartLegend: boolean = true;
-
-    public barChartData: any[] = [
-        {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-    ];
+    public barChartData: any[] = [];
 
     @ViewChild('modal') public modal: ModalDirective;
 
@@ -43,17 +40,25 @@ export class RealtimeQuestionComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.modal.onShown.subscribe(
+        let sub = this.modal.onShown.subscribe(
             () => {
                 this.viewChart = true;
             }
         );
 
-        this.modal.onHidden.subscribe(
+        let sub2 = this.modal.onHidden.subscribe(
             () => {
                 this.viewChart = false;
             }
-        )
+        );
+
+        this.eventSrv.register('modal1', sub);
+        this.eventSrv.register('modal2', sub2);
+    }
+
+    ngOnDestroy() {
+        this.eventSrv.deregister('modal1');
+        this.eventSrv.deregister('modal2');
     }
 
     open(path: string) {
@@ -65,7 +70,6 @@ export class RealtimeQuestionComponent implements OnInit {
 
     close() {
         this.modal.hide();
-        this.helperSrv.toggleFullScreen();
     }
 
     fetchQuestion() {
