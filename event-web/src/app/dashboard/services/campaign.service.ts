@@ -1,36 +1,31 @@
-import {Injectable} from "@angular/core";
+import {Injectable, Inject} from "@angular/core";
 import {ApiService} from "../../services/api.service";
-import {Observable} from "rxjs";
+import {Observable, Subject} from "rxjs";
 import {AngularFireDatabase} from "angularfire2";
+import {FirebaseRef} from 'angularfire2';
 
 @Injectable()
 export class CampaignService {
+    private firebase: any;
+
+    private path = 'events';
 
     constructor(private apiSrv: ApiService,
+                @Inject(FirebaseRef) ref: Firebase,
                 private firebaseDB: AngularFireDatabase) {
+        this.firebase = ref;
     }
 
     public list(): Observable<any> {
-        return this.firebaseDB.object('events');
+        return this.firebaseDB.list(this.path);
     }
 
-    public create(data: any) {
-        let args = {
-            method: 'POST',
-            url: '/campaign',
-            data: data
-        };
-
-        console.log(args);
+    public create(data: any): string {
+        return this.firebase.database().ref(this.path).push(data).key;
     }
 
     public detail(id: string): Observable<any> {
-        let args = {
-            method: 'GET',
-            url: '/campaign/' + id
-        };
-
-        return this.apiSrv.requestAuth(args);
+        return this.firebaseDB.object(this.path + '/' + id);
     }
 
     public deleteC(id: string): Observable<any> {

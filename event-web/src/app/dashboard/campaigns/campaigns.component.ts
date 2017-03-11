@@ -15,7 +15,7 @@ export class CampaignsComponent implements OnInit {
     @ViewChild('formCreate') public formCreate: NewCampaignComponent;
 
     private querySearch: string = '';
-    private listCampaigns: Array<MkCampaign> = [];
+    private events: Array<MkCampaign> = [];
 
     constructor(private campaignSrv: CampaignService,
                 private title: Title,
@@ -27,8 +27,8 @@ export class CampaignsComponent implements OnInit {
 
         this.campaignSrv.list()
             .subscribe(
-                data => {
-                    console.log(data);
+                events => {
+                    this.events = events;
                 }
             );
     }
@@ -39,18 +39,18 @@ export class CampaignsComponent implements OnInit {
 
     campaignsFiltered() {
         if (!this.querySearch.length) {
-            return this.listCampaigns;
+            return this.events;
         }
 
-        return this.listCampaigns
+        return this.events
             .filter(
-                campaign => {
-                    if (!campaign.name) {
+                event => {
+                    if (!event.name) {
                         return false;
                     }
 
                     let query = this.querySearch.toLowerCase();
-                    let name = campaign.name.toLowerCase();
+                    let name = event.name.toLowerCase();
 
                     return name.indexOf(query) !== -1;
                 }

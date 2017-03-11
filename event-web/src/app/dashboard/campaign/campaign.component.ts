@@ -12,9 +12,11 @@ import {Title} from "@angular/platform-browser";
 })
 export class CampaignComponent implements OnInit {
     public id: string = '';
-    public campaign: MkCampaign = null;
+    public event: MkCampaign = null;
 
     public tab: string = 'design';
+
+    private loading: boolean = true;
 
     constructor(private campaignSrv: CampaignService,
                 private activatedRoute: ActivatedRoute,
@@ -35,7 +37,7 @@ export class CampaignComponent implements OnInit {
             .activate(this.id)
             .subscribe(
                 (response) => {
-                    this.campaign = response.data;
+                    this.event = response.data;
                 }
             );
     }
@@ -44,8 +46,8 @@ export class CampaignComponent implements OnInit {
         this.campaignSrv
             .deactivate(this.id)
             .subscribe(
-                (response) => {
-                    this.campaign = response.data;
+                (event) => {
+                    this.event = event;
                 }
             );
     }
@@ -67,14 +69,14 @@ export class CampaignComponent implements OnInit {
     }
 
     onUpdateAutoResponseEmail(autoResponseEmail: any) {
-        this.campaign.autoResponseEmail = autoResponseEmail;
+        this.event.autoResponseEmail = autoResponseEmail;
     }
 
     update(data) {
         this.campaignSrv.update(this.id, data)
             .subscribe(
-                response => {
-                    this.campaign = response.data;
+                event => {
+                    this.event = event;
                     this.updateTitle();
                 }
             );
@@ -99,8 +101,9 @@ export class CampaignComponent implements OnInit {
         this.campaignSrv
             .detail(this.id)
             .subscribe(
-                response => {
-                    this.campaign = response.data;
+                event => {
+                    this.loading = false;
+                    this.event = event;
                     this.updateTitle();
                 }
             );
@@ -126,6 +129,6 @@ export class CampaignComponent implements OnInit {
     }
 
     private updateTitle() {
-        this.title.setTitle(this.campaign.name);
+        this.title.setTitle(this.event.name);
     }
 }

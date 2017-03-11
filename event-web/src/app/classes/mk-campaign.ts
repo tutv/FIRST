@@ -1,4 +1,5 @@
 export class MkCampaign {
+    $key: string;
     name: string;
     configs: any;
     status: string;

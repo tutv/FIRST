@@ -16,6 +16,7 @@ export class NewCampaignComponent implements OnInit, OnChanges {
 
     private event: any = {
         name: '',
+        status: 'Publish'
     };
 
     constructor(private campaignSrv: CampaignService,
@@ -48,6 +49,8 @@ export class NewCampaignComponent implements OnInit, OnChanges {
     }
 
     createCampaign() {
+        let event_id = this.campaignSrv.create(this.event);
+        this.router.navigate(['/a/events/' + event_id]);
     }
 
 }

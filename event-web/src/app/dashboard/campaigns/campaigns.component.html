@@ -27,7 +27,7 @@
                 <div class="status" [ngClass]="event.status">
                     {{event.status}}
                 </div>
-                <a>
+                <a [routerLink]="['/a/events/' + event.$key]">
                     <img class="card-img-top img-fluid" src="./assets/images/screeshot.png" alt="Card image cap">
                 </a>
                 <div class="card-block">

@@ -1,94 +1,11 @@
-<div class="campaign-wrapper" *ngIf="campaign">
+<div class="campaign-wrapper" *ngIf="event">
     <div class="h2 name py-1">
-        <app-text-editable [content]="campaign.name"
+        <app-text-editable [content]="event.name"
                            (update)="onUpdateName($event)">
         </app-text-editable>
     </div>
 
-    <div class="py-2">
-        <header class="navbar tabs-control">
-            <ul class="nav navbar-nav">
-                <li class="nav-item px-2">
-                    <a class="nav-link" [class.active]="tab == 'design'" (click)="onClickChangeTab('design')">
-                        <i class="fa fa-paint-brush" aria-hidden="true"></i> Design
-                    </a>
-                </li>
-
-                <li class="nav-item px-2">
-                    <a class="nav-link" [class.active]="tab == 'form'" (click)="onClickChangeTab('form')">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i> Form
-                    </a>
-                </li>
-
-                <li class="nav-item px-2">
-                    <a class="nav-link" [class.active]="tab == 'triggers'" (click)="onClickChangeTab('triggers')">
-                        <i class="fa fa-cogs" aria-hidden="true"></i> Triggers
-                    </a>
-                </li>
-
-                <li class="nav-item px-2">
-                    <a class="nav-link" [class.active]="tab == 'emails'" (click)="onClickChangeTab('emails')">
-                        <i class="fa fa-envelope-o" aria-hidden="true"></i> Emails
-                    </a>
-                </li>
-
-                <li class="nav-item px-2">
-                    <a class="nav-link" [class.active]="tab == 'results'" (click)="onClickChangeTab('results')">
-                        <i class="fa fa-line-chart" aria-hidden="true"></i> Results
-                    </a>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-nav float-xs-right">
-                <li class="nav-item px-1">
-                    <div class="btn-group" dropdown>
-                        <button [hidden]="campaign.status == 'active'"
-                                (click)="onClickActivate()"
-                                type="button" class="btn btn-primary">
-                            Activate
-                        </button>
-
-                        <button type="button" class="btn btn-secondary"
-                                (click)="onClickDeactivate()"
-                                [hidden]="campaign.status != 'active'">
-                            Deactivate
-                        </button>
-
-                        <button type="button" class="btn dropdown-toggle-split"
-                                [ngClass]="campaign.status == 'active' ? 'btn-secondary' : 'btn-primary'"
-                                dropdownToggle>
-                            <span class="caret"></span>
-                            <span class="sr-only">Action</span>
-                        </button>
-
-                        <ul class="dropdown-menu" dropdownMenu role="menu" aria-labelledby="split-button">
-                            <li role="menuitem"><a class="text-danger dropdown-item"
-                                                   (click)="onClickDelete()">Delete</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </header>
-    </div>
-
     <div class="tabs">
-        <app-design-campaign *ngIf="tab == 'design'" [type]="campaign.type"
-                             (displaysChange)="onUpdateDisplays($event)"
-                             [displays]="campaign.displays"></app-design-campaign>
 
-        <app-form-campaign *ngIf="tab == 'form'" [campaignId]="id" [settings]="campaign.formSettings"
-                           (settingsChange)="onUpdateFormSettings($event)"></app-form-campaign>
-
-        <app-setting-campaign *ngIf="tab == 'triggers'" [settings]="campaign.configs"
-                              (updateSettings)="onUpdateConfigs($event)">
-        </app-setting-campaign>
-
-        <mk-result-campaign *ngIf="tab == 'results'" [campaignID]="id"></mk-result-campaign>
-
-        <mk-email-campaign
-                [campaignId]="campaign._id"
-                (autoResponseChange)="onUpdateAutoResponseEmail($event)"
-                *ngIf="tab == 'emails'" [autoResponse]="campaign.autoResponseEmail"></mk-email-campaign>
     </div>
 </div>
