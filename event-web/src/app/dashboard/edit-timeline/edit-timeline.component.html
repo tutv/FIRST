@@ -2,7 +2,7 @@
     <div class="tick"></div>
 
     <div class="timeline mb-1" *ngFor="let tl of timelines; let i = index">
-        <div class="enable" [class.active]="tl.enabled">
+        <div class="enable" [class.active]="tl.enabled" (click)="onToggleEnable(i, $event)">
             <i class="fa fa-check" aria-hidden="true"></i>
         </div>
 
@@ -10,8 +10,12 @@
             <app-text-editable [content]="tl.name" (update)="onUpdateName(i, $event)"></app-text-editable>
         </div>
 
+        <div class="place mb-1">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <app-text-editable [content]="tl.place" (update)="onUpdatePlace(i, $event)"></app-text-editable>
+        </div>
+
         <div class="form-group">
-            <label>Chi tiết</label>
             <textarea title="description"
                       class="form-control"
                       name="description"

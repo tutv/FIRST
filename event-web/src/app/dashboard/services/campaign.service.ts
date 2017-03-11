@@ -22,7 +22,7 @@ export class CampaignService {
     public updateTimelines(event_id: string, data: any) {
         let path = this.path + '/' + event_id + '/timelines';
 
-        return this.firebaseDB.object(path).update(data);
+        return this.firebaseDB.object(path).set(data);
     }
 
     public getTimelines(event_id: string): Observable<any> {

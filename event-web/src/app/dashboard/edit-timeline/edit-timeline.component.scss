@@ -1,9 +1,26 @@
+@import "../../../scss/bootstrap-variables";
+
 .timeline {
     position: relative;
 
     .name {
         font-size: 20px;
         font-weight: bold;
+    }
+
+    .enable {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: -53px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        padding: 3px 6px;
+
+        &.active {
+            color: $brand-success;
+        }
     }
 }
 
@@ -14,10 +31,10 @@
     .tick {
         position: absolute;
         top: 0;
-        left: -20px;
+        left: -40px;
         bottom: 0;
         width: 2px;
         height: 100%;
-        background-color: red;
+        background-color: $brand-danger;
     }
 }

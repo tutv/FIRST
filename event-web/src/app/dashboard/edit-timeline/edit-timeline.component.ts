@@ -35,6 +35,16 @@ export class EditTimelineComponent implements OnInit {
         this.onUpdate();
     }
 
+    onUpdatePlace(index: number, place: string) {
+        this.timelines[index].place = place;
+        this.onUpdate();
+    }
+
+    onToggleEnable(index: number) {
+        this.timelines[index].enabled = !this.timelines[index].enabled;
+        this.onUpdate();
+    }
+
     onClickUpdate($event: Event) {
         $event.preventDefault();
         this.onUpdate();
