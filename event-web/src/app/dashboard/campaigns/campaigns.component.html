@@ -1,4 +1,6 @@
 <div class="campaigns-wrapper">
+    <mk-loading [toggle]="loading"></mk-loading>
+
     <app-new-campaign #formCreate></app-new-campaign>
 
     <header class="navbar">
@@ -23,8 +25,8 @@
 
     <div class="list-campaigns row">
         <div class="col-md-4" *ngFor="let event of campaignsFiltered()">
-            <div class="card campaign" [ngClass]="event.status == 'publish' ? 'card-accent-success' : ''">
-                <div class="status" [ngClass]="event.status">
+            <div class="card campaign" [ngClass]="event.status == 'Publish' ? 'card-accent-success' : ''">
+                <div class="status" [ngClass]="event.status | lowercase">
                     {{event.status}}
                 </div>
                 <a [routerLink]="['/a/events/' + event.$key]">
@@ -32,17 +34,8 @@
                 </a>
                 <div class="card-block">
                     <h3 class="card-title py-1 text-xs-center">{{event.name}}</h3>
-                    <div class="stat text-xs-center">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="text-muted small text-uppercase font-weight-bold">Views</div>
-                                <div class="h4 text-info">{{event.view_count || 0}}</div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-muted small text-uppercase font-weight-bold">Signusp</div>
-                                <div class="h4 text-info">{{event.signup_count || 0}}</div>
-                            </div>
-                        </div>
+                    <div class="stat">
+                        <div class="h6"><i class="fa fa-map-marker" aria-hidden="true"></i> {{event.place}}</div>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import {Injectable, Inject} from "@angular/core";
 import {ApiService} from "../../services/api.service";
 import {Observable, Subject} from "rxjs";
-import {AngularFireDatabase} from "angularfire2";
+import {AngularFireDatabase, FirebaseListObservable} from "angularfire2";
 import {FirebaseRef} from 'angularfire2';
 
 @Injectable()
@@ -10,10 +10,13 @@ export class CampaignService {
 
     private path = 'events';
 
+    private events: FirebaseListObservable<any>;
+
     constructor(private apiSrv: ApiService,
                 @Inject(FirebaseRef) ref: Firebase,
                 private firebaseDB: AngularFireDatabase) {
         this.firebase = ref;
+        this.events = this.firebaseDB.list(this.path);
     }
 
     public list(): Observable<any> {
@@ -21,7 +24,7 @@ export class CampaignService {
     }
 
     public create(data: any): string {
-        return this.firebase.database().ref(this.path).push(data).key;
+        return this.events.push(data).key;
     }
 
     public detail(id: string): Observable<any> {
@@ -37,14 +40,8 @@ export class CampaignService {
         return this.apiSrv.requestAuth(args);
     }
 
-    public update(id: string, updateData: any) {
-        let args = {
-            method: 'PUT',
-            url: `/campaign/${id}`,
-            data: updateData
-        };
-
-        return this.apiSrv.requestAuth(args, true);
+    public update(key: string, updateData: any) {
+        return this.events.update(key, updateData);
     }
 
     public updateSettings(id: string, configs: any) {

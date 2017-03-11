@@ -17,6 +17,8 @@ export class CampaignsComponent implements OnInit {
     private querySearch: string = '';
     private events: Array<MkCampaign> = [];
 
+    private loading:boolean = true;
+
     constructor(private campaignSrv: CampaignService,
                 private title: Title,
                 private storageSrv: StorageService) {
@@ -25,9 +27,11 @@ export class CampaignsComponent implements OnInit {
     ngOnInit() {
         this.title.setTitle('Events');
 
+        this.loading = true;
         this.campaignSrv.list()
             .subscribe(
                 events => {
+                    this.loading = false;
                     this.events = events;
                 }
             );

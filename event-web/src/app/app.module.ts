@@ -33,11 +33,11 @@ import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
 import {EventService} from "./dashboard/services/event.service";
 
 const myFirebaseConfig = {
-    apiKey: "AIzaSyARwPaIyEUEfckXV1Ijmp3GDR3aal5AFog",
-    authDomain: "event-f2831.firebaseapp.com",
-    databaseURL: "https://event-f2831.firebaseio.com",
-    storageBucket: "event-f2831.appspot.com",
-    messagingSenderId: "237982710017"
+    apiKey: "AIzaSyDpt9qprGOWREZIT27eGeIlbNEzCU66H0k",
+    authDomain: "timy-hackathon.firebaseapp.com",
+    databaseURL: "https://timy-hackathon.firebaseio.com",
+    storageBucket: "timy-hackathon.appspot.com",
+    messagingSenderId: "4477582653"
 };
 
 const myFirebaseAuthConfig = {

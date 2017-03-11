@@ -74,9 +74,8 @@ export class CampaignComponent implements OnInit {
 
     update(data) {
         this.campaignSrv.update(this.id, data)
-            .subscribe(
-                event => {
-                    this.event = event;
+            .then(
+                () => {
                     this.updateTitle();
                 }
             );
