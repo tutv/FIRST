@@ -41,6 +41,7 @@ import {EventService} from "./services/event.service";
 import {EmailCampaignComponent} from './campaign/email-campaign/email-campaign.component';
 import {EmailEditorComponent} from './email-editor/email-editor.component';
 import { ListEmailTemplatesComponent } from './list-email-templates/list-email-templates.component';
+import { QrCodeComponent } from './qr-code/qr-code.component';
 
 @NgModule({
     imports: [
@@ -86,7 +87,8 @@ import { ListEmailTemplatesComponent } from './list-email-templates/list-email-t
         ListTemplatesComponent,
         EmailCampaignComponent,
         EmailEditorComponent,
-        ListEmailTemplatesComponent
+        ListEmailTemplatesComponent,
+        QrCodeComponent
     ],
     providers: [
         ControlEventService,
