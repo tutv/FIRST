@@ -4,6 +4,10 @@
     <div class="timeline mb-1" *ngFor="let tl of timelines; let i = index"
          [class.active]="tl.enabled"
          [class.online]="tl.is_online">
+        <div class="feedbacks">
+            <mk-feedback-event [feedback]="tl.feedback"></mk-feedback-event>
+        </div>
+
         <div class="enable" [class.active]="tl.enabled" (click)="onToggleEnable(i, $event)">
             <i class="fa fa-check" aria-hidden="true"></i>
         </div>

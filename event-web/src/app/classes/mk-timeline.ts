@@ -6,5 +6,5 @@ export class MkTimeLine {
     name: string;
     place: string;
     is_online: boolean;
-    question: Array<any>;
+    feedback: Array<any>;
 }
