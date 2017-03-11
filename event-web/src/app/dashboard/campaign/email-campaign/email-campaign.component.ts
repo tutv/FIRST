@@ -44,19 +44,6 @@ export class EmailCampaignComponent implements OnInit {
     }
 
     confirmUpdate() {
-        this.loading = true;
-        this.campaignSrv
-            .update(this.campaignId, {
-                autoResponseEmail: this.autoResponse
-            })
-            .subscribe(
-                () => {
-                    this.loading = false;
-                    this.autoResponseChange.next(this.autoResponse);
-                },
-                () => {
-                    this.loading = false;
-                }
-            );
+
     }
 }

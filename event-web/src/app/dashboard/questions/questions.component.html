@@ -1,3 +1,13 @@
 <p>
     questions works!
 </p>
+
+<div class="questions">
+    <div class="question" *ngFor="let question of questions">
+        {{question.$key}}
+    </div>
+</div>
+
+<form>
+    <button class="btn btn-primary">Thêm câu hỏi</button>
+</form>

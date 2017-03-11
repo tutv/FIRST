@@ -35,6 +35,10 @@ export class CampaignService {
         return this.firebaseDB.list(this.path + '/' + id + '/users');
     }
 
+    public getQuestions(id: string): Observable<any> {
+        return this.firebaseDB.list(this.path + '/' + id + '/questions');
+    }
+
     public deleteC(id: string): Observable<any> {
         let args = {
             method: 'DELETE',

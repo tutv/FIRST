@@ -32,6 +32,8 @@ import {SharedModule} from "./shared/shared.module";
 import {AngularFireModule, AuthProviders, AuthMethods} from "angularfire2";
 import {EventService} from "./dashboard/services/event.service";
 
+import {CollapseModule} from 'ng2-bootstrap/collapse';
+
 const myFirebaseConfig = {
     apiKey: "AIzaSyDpt9qprGOWREZIT27eGeIlbNEzCU66H0k",
     authDomain: "timy-hackathon.firebaseapp.com",
@@ -54,7 +56,8 @@ const myFirebaseAuthConfig = {
         ToasterModule,
         NgProgressModule,
         SharedModule,
-        DropdownModule.forRoot()
+        DropdownModule.forRoot(),
+        CollapseModule.forRoot()
     ],
     declarations: [
         AppComponent,
