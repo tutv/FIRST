@@ -1,0 +1,5 @@
+<span class="stars">
+    <span class="star" *ngFor="let num of numbers; let i = index" [class.active]="i<number">
+        <i class="fa fa-star{{i<number ? '' : '-o'}}" aria-hidden="true"></i>
+    </span>
+</span>

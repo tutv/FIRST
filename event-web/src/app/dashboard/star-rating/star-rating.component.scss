@@ -1,0 +1,7 @@
+@import "../../../scss/bootstrap-variables";
+
+.star {
+    &.active {
+        color: $brand-warning;
+    }
+}

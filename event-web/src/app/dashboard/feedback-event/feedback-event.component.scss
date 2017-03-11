@@ -1,0 +1,33 @@
+@import "../../../scss/bootstrap-variables";
+
+.feedback-wrapper {
+
+}
+
+.icon {
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+    padding: 2px;
+    cursor: pointer;
+    font-size: 21px;
+
+    &:hover {
+        color: $brand-success;
+
+        .number {
+
+        }
+    }
+
+    .number {
+        position: absolute;
+        top: 4px;
+        right: -2px;
+        color: #fff;
+        background: $brand-danger;
+        border-radius: 50%;
+        padding: 0 3px;
+        font-size: 9px;
+    }
+}

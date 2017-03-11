@@ -1,6 +1,37 @@
 <div class="feedback-wrapper">
-    <div class="icon">
+    <div class="icon" (click)="open()">
         <div class="number">{{feedbacks.length}}</div>
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
+    </div>
+</div>
+
+<div bsModal #modal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Phan hoi tu nguoi dung</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="list-feedbacks">
+                    <div class="feedback" *ngFor="let feed of feedbacks">
+                        <div class="card">
+                            <div class="card-header">
+                                <mk-star-rating [number]="feed.star"></mk-star-rating>
+                                boi {{feed.email}}
+                            </div>
+
+                            <div class="card-block">
+                                {{feed.content}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

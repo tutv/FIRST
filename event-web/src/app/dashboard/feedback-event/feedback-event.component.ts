@@ -1,5 +1,6 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, ViewChild} from '@angular/core';
 import {MkFeedback} from "../../classes/mk-feedback";
+import {ModalDirective} from "ng2-bootstrap";
 
 @Component({
     selector: 'mk-feedback-event',
@@ -7,6 +8,8 @@ import {MkFeedback} from "../../classes/mk-feedback";
     styleUrls: ['./feedback-event.component.scss']
 })
 export class FeedbackEventComponent implements OnInit, OnChanges {
+    @ViewChild('modal') public modal: ModalDirective;
+
     @Input() public feedback;
 
     private feedbacks: Array<MkFeedback> = [];
@@ -35,6 +38,17 @@ export class FeedbackEventComponent implements OnInit, OnChanges {
 
             this.feedbacks.push(feedback);
         }
+    }
+
+    close() {
+        this.modal.hide();
+    }
+
+    open() {
+        if (!this.feedbacks.length) {
+            return;
+        }
+        this.modal.show();
     }
 
 }

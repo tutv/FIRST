@@ -49,6 +49,7 @@ import {ChartsModule} from 'ng2-charts/ng2-charts';
 import {EditTimelineComponent} from './edit-timeline/edit-timeline.component';
 import {NavigationEventComponent} from './navigation-event/navigation-event.component';
 import { FeedbackEventComponent } from './feedback-event/feedback-event.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 @NgModule({
     imports: [
@@ -101,7 +102,8 @@ import { FeedbackEventComponent } from './feedback-event/feedback-event.componen
         RealtimeQuestionComponent,
         EditTimelineComponent,
         NavigationEventComponent,
-        FeedbackEventComponent
+        FeedbackEventComponent,
+        StarRatingComponent
     ],
     providers: [
         ControlEventService,
