@@ -7,6 +7,15 @@
                 <div class="qr-code">
                     <mk-qr-code [data]="id"></mk-qr-code>
                 </div>
+
+                <div class="number-users">
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="h4 mb-0 text-info">{{users.length}}</div>
+                            <small class="text-muted text-uppercase font-weight-bold">Số người tham gia</small>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
@@ -27,11 +36,6 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="number-users float-xs-right base-middle">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-
-                        <span class="h4 mb-0">{{users.length}}</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +69,7 @@
         <div class="card timeline my-2">
             <div class="card-header">Lịch trình</div>
             <div class="card-block">
-
+                <mk-edit-timeline [eventId]="id" (update)="onUpdateTimelines($event)"></mk-edit-timeline>
             </div>
         </div>
 

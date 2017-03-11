@@ -2,12 +2,12 @@
     <a dropdownToggle class="nav-link dropdown-toggle nav-dropdown-toggle"
        data-toggle="dropdown" role="button" aria-haspopup="true"
        aria-expanded="false">
-        <span class="hidden-md-down">Hi {{name()}}</span>
+        <img class="img-avatar" alt="{{name()}}" [src]="avatar()">
+        <span class="hidden-md-down">{{name()}}</span>
     </a>
     <div dropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="simple-dropdown">
-        <a class="dropdown-item" [routerLink]="['/settings']"><i class="fa fa-wrench"></i> Settings</a>
-        <a class="dropdown-item"><i class="fa fa-life-ring"></i> Help Docs</a>
+        <a class="dropdown-item" [routerLink]="['/settings']"><i class="fa fa-wrench"></i> Cài đặt</a>
         <div class="divider dropdown-divider"></div>
-        <a class="dropdown-item" href="/" (click)="onClickLogout($event)"><i class="fa fa-sign-out"></i> Logout</a>
+        <a class="dropdown-item" href="/" (click)="onClickLogout($event)"><i class="fa fa-sign-out"></i> Thoát</a>
     </div>
 </li>

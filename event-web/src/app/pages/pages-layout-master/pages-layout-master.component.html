@@ -5,13 +5,13 @@
 
         <ul class="nav navbar-nav" *ngIf="authSrv.isLoggedIn()">
             <li class="nav-item px-2">
-                <a class="nav-link" [routerLink]="['/a']" routerLinkActive="active">Dashboard</a>
+                <a class="nav-link" [routerLink]="['/a']" routerLinkActive="active">Quản trị</a>
             </li>
         </ul>
 
         <ul class="nav navbar-nav float-xs-right">
             <li class="nav-item px-2" *ngIf="!authSrv.isLoggedIn()">
-                <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
+                <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Đăng nhập</a>
             </li>
 
             <app-dropdown-account *ngIf="authSrv.isLoggedIn()"></app-dropdown-account>

@@ -1,0 +1,26 @@
+<div class="timelines-wrapper mb-2">
+    <div class="tick"></div>
+
+    <div class="timeline mb-1" *ngFor="let tl of timelines; let i = index">
+        <div class="enable" [class.active]="tl.enabled">
+            <i class="fa fa-check" aria-hidden="true"></i>
+        </div>
+
+        <div class="name">
+            <app-text-editable [content]="tl.name" (update)="onUpdateName(i, $event)"></app-text-editable>
+        </div>
+
+        <div class="form-group">
+            <label>Chi tiết</label>
+            <textarea title="description"
+                      class="form-control"
+                      name="description"
+                      [(ngModel)]="tl.description"></textarea>
+        </div>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <button class="btn btn-success" (click)="onClickUpdate($event)">Cập nhật</button>
+</div>

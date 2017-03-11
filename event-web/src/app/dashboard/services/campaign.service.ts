@@ -19,6 +19,18 @@ export class CampaignService {
         this.events = this.firebaseDB.list(this.path);
     }
 
+    public updateTimelines(event_id: string, data: any) {
+        let path = this.path + '/' + event_id + '/timelines';
+
+        return this.firebaseDB.object(path).update(data);
+    }
+
+    public getTimelines(event_id: string): Observable<any> {
+        let path = this.path + '/' + event_id + '/timelines';
+
+        return this.firebaseDB.object(path);
+    }
+
     public object(path: string): Observable<any> {
         return this.firebaseDB.object(path);
     }

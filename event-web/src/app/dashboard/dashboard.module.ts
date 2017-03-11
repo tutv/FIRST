@@ -46,6 +46,7 @@ import {QuestionsComponent} from './questions/questions.component';
 import {RealtimeQuestionComponent} from './realtime-question/realtime-question.component';
 
 import {ChartsModule} from 'ng2-charts/ng2-charts';
+import { EditTimelineComponent } from './edit-timeline/edit-timeline.component';
 
 
 @NgModule({
@@ -96,7 +97,8 @@ import {ChartsModule} from 'ng2-charts/ng2-charts';
         ListEmailTemplatesComponent,
         QrCodeComponent,
         QuestionsComponent,
-        RealtimeQuestionComponent
+        RealtimeQuestionComponent,
+        EditTimelineComponent
     ],
     providers: [
         ControlEventService,

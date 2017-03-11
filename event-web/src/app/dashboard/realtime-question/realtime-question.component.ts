@@ -88,10 +88,14 @@ export class RealtimeQuestionComponent implements OnInit, OnDestroy {
         let stats = this.question.stats;
         let data = [0, 0, 0, 0];
         if (stats) {
-            data[0] = stats.as1 || 0;
-            data[1] = stats.as2 || 0;
-            data[2] = stats.as3 || 0;
-            data[3] = stats.as4 || 0;
+            let as1 = stats.as1 || {};
+            let as2 = stats.as2 || {};
+            let as3 = stats.as3 || {};
+            let as4 = stats.as4 || {};
+            data[0] = Object.keys(as1).length;
+            data[1] = Object.keys(as2).length;
+            data[2] = Object.keys(as3).length;
+            data[3] = Object.keys(as4).length;
         }
 
         this.barChartData = [

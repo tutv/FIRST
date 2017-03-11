@@ -38,6 +38,15 @@ export class DropdownAccountComponent implements OnInit {
         return this.storageSrv.get('profile');
     }
 
+    public avatar() {
+        let user = this.user();
+        if (!user) {
+            return false;
+        }
+
+        return user.photoURL;
+    }
+
     public name() {
         let user = this.user();
         if (!user) {

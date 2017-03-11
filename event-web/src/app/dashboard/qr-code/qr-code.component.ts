@@ -20,4 +20,10 @@ export class QrCodeComponent implements OnInit, OnChanges {
     ngOnChanges() {
         this.url = `https://api.qrserver.com/v1/create-qr-code/?size=${this.size}&data=${this.data}`;
     }
+
+    onClickPrint() {
+        if (window.print()) {
+            window.print();
+        }
+    }
 }

@@ -1,4 +1,26 @@
+@import "../../../scss/bootstrap-variables";
+
 img {
     width: 100%;
     height: auto;
+}
+
+.qr-wrapper {
+    position: relative;
+
+    .icon {
+        position: absolute;
+        bottom: 5px;
+        left: 10px;
+        font-size: 30px;
+        display: none;
+        color: $brand-danger;
+        cursor: pointer;
+    }
+
+    &:hover {
+        .icon {
+            display: inline-block;
+        }
+    }
 }
