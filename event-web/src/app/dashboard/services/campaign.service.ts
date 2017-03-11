@@ -1,30 +1,27 @@
 import {Injectable} from "@angular/core";
 import {ApiService} from "../../services/api.service";
 import {Observable} from "rxjs";
+import {AngularFireDatabase} from "angularfire2";
 
 @Injectable()
 export class CampaignService {
 
-    constructor(private apiSrv: ApiService) {
+    constructor(private apiSrv: ApiService,
+                private firebaseDB: AngularFireDatabase) {
     }
 
-    public list(businessId: string): Observable<any> {
-        let args = {
-            method: 'GET',
-            url: '/campaign/business/' + businessId
-        };
-
-        return this.apiSrv.requestAuth(args);
+    public list(): Observable<any> {
+        return this.firebaseDB.object('events');
     }
 
-    public create(data: any): Observable<any> {
+    public create(data: any) {
         let args = {
             method: 'POST',
             url: '/campaign',
             data: data
         };
 
-        return this.apiSrv.requestAuth(args);
+        console.log(args);
     }
 
     public detail(id: string): Observable<any> {

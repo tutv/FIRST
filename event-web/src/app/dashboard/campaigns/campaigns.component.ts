@@ -24,6 +24,13 @@ export class CampaignsComponent implements OnInit {
 
     ngOnInit() {
         this.title.setTitle('Events');
+
+        this.campaignSrv.list()
+            .subscribe(
+                data => {
+                    console.log(data);
+                }
+            );
     }
 
     onOpenCreateForm() {

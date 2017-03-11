@@ -42,7 +42,7 @@ const myFirebaseConfig = {
 
 const myFirebaseAuthConfig = {
     provider: AuthProviders.Facebook,
-    method: AuthMethods.Redirect
+    method: AuthMethods.Popup
 };
 
 @NgModule({
