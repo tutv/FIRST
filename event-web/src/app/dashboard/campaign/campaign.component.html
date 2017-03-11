@@ -1,16 +1,36 @@
-<div class="campaign-wrapper" *ngIf="event">
-    <div class="h2 name py-1">
-        <app-text-editable [content]="event.name"
-                           (update)="onUpdateName($event)">
-        </app-text-editable>
-    </div>
+<div class="campaign-wrapper">
+    <div class="detail" *ngIf="event">
+        <div class="event-header">
+            <div class="banner">
+                <img [src]="event.banner" alt="Banner" class="img-fluid">
 
-    <div class="tabs">
-        <div class="row">
-            <div class="col-md-3">
-                <mk-qr-code [data]="id"></mk-qr-code>
+                <div class="qr-code">
+                    <mk-qr-code [data]="id"></mk-qr-code>
+                </div>
+            </div>
+
+            <div class="h3 name py-1">
+                <app-text-editable [content]="event.name"
+                                   (update)="onUpdateName($event)">
+                </app-text-editable>
+            </div>
+
+            <div class="place h5">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+                <app-text-editable [content]="event.place"
+                                   (update)="onUpdatePlace($event)">
+                </app-text-editable>
             </div>
         </div>
 
+        <div class="card timeline my-2">
+            <div class="card-header">Agenda</div>
+            <div class="card-block">
+
+            </div>
+        </div>
     </div>
+
+    <mk-loading [toggle]="loading"></mk-loading>
 </div>

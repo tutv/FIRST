@@ -1,5 +1,7 @@
 export class MkCampaign {
     $key: string;
+    banner: string;
+    place: string;
     name: string;
     configs: any;
     status: string;

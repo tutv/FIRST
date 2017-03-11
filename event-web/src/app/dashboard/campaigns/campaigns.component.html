@@ -1,6 +1,4 @@
 <div class="campaigns-wrapper">
-    <mk-loading [toggle]="loading"></mk-loading>
-
     <app-new-campaign #formCreate></app-new-campaign>
 
     <header class="navbar">
@@ -24,6 +22,8 @@
     </header>
 
     <div class="list-campaigns row">
+        <mk-loading [toggle]="loading"></mk-loading>
+
         <div class="col-md-4" *ngFor="let event of campaignsFiltered()">
             <div class="card campaign" [ngClass]="event.status == 'Publish' ? 'card-accent-success' : ''">
                 <div class="status" [ngClass]="event.status | lowercase">

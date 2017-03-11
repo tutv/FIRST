@@ -14,8 +14,6 @@ export class CampaignComponent implements OnInit {
     public id: string = '';
     public event: MkCampaign = null;
 
-    public tab: string = 'design';
-
     private loading: boolean = true;
 
     constructor(private campaignSrv: CampaignService,
@@ -28,48 +26,12 @@ export class CampaignComponent implements OnInit {
         this.captureParams();
     }
 
-    onClickChangeTab(tab: string) {
-        this.tab = tab;
-    }
-
-    onClickActivate() {
-        this.campaignSrv
-            .activate(this.id)
-            .subscribe(
-                (response) => {
-                    this.event = response.data;
-                }
-            );
-    }
-
-    onClickDeactivate() {
-        this.campaignSrv
-            .deactivate(this.id)
-            .subscribe(
-                (event) => {
-                    this.event = event;
-                }
-            );
-    }
-
     onUpdateName(name) {
         this.update({name});
     }
 
-    onUpdateDisplays(displays) {
-        this.update({displays});
-    }
-
-    onUpdateFormSettings(settings: any) {
-        this.campaignSrv.updateFormSettings(this.id, settings);
-    }
-
-    onUpdateConfigs(configs: any) {
-        this.campaignSrv.updateSettings(this.id, configs);
-    }
-
-    onUpdateAutoResponseEmail(autoResponseEmail: any) {
-        this.event.autoResponseEmail = autoResponseEmail;
+    onUpdatePlace(place) {
+        this.update({place});
     }
 
     update(data) {
