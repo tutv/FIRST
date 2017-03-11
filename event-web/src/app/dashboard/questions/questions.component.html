@@ -1,19 +1,19 @@
 <div class="questions">
-    <div class="question my-2" *ngFor="let question of questions">
+    <div class="question mb-2" *ngFor="let question of questions">
         <h3 class="h5">{{question.content}}
 
             <span (click)="onClickRemoveQuestion(question.$key)" class="close float-xs-right">&times;</span>
         </h3>
 
-        <button class="btn btn-primary btn-sm" (click)="onClickPushQuestion($event, question)">Gửi và xem</button>
+        <button class="btn btn-info btn-sm" (click)="onClickPushQuestion($event, question)">Gửi và xem</button>
         <button class="btn btn-secondary btn-sm" (click)="onClickViewResult($event, question)">Xem kết quả</button>
     </div>
 </div>
 
 <mk-realtime-question #realtimeQuestion></mk-realtime-question>
 
-<form class="my-2">
-    <button class="btn btn-primary" (click)="open()">Thêm câu hỏi</button>
+<form class="my-3">
+    <button class="btn btn-success" (click)="open()">Thêm câu hỏi</button>
 </form>
 
 <div bsModal #modal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"

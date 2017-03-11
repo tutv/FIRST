@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="card descriptions my-2">
+        <div class="card descriptions my-2" id="overview">
             <div class="card-header">Thông tin tổng quan
 
                 <button class="btn btn-sm btn-primary mx-1" *ngIf="editingOverview"
@@ -59,21 +59,21 @@
             </div>
         </div>
 
-        <div class="card maps my-2">
+        <div class="card maps my-2" id="map">
             <div class="card-header">Bản đồ</div>
             <div class="card-block">
                 <img [src]="event.map">
             </div>
         </div>
 
-        <div class="card timeline my-2">
+        <div class="card timeline my-2" id="agenda">
             <div class="card-header">Lịch trình</div>
             <div class="card-block">
                 <mk-edit-timeline [eventId]="id" (update)="onUpdateTimelines($event)"></mk-edit-timeline>
             </div>
         </div>
 
-        <div class="card questions my-2">
+        <div class="card questions my-2" id="quick-questions">
             <div class="card-header">Câu hỏi nhanh</div>
             <div class="card-block">
                 <mk-questions [eventId]="id"></mk-questions>

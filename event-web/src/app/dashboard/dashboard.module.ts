@@ -47,6 +47,7 @@ import {RealtimeQuestionComponent} from './realtime-question/realtime-question.c
 
 import {ChartsModule} from 'ng2-charts/ng2-charts';
 import { EditTimelineComponent } from './edit-timeline/edit-timeline.component';
+import { NavigationEventComponent } from './navigation-event/navigation-event.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { EditTimelineComponent } from './edit-timeline/edit-timeline.component';
         QrCodeComponent,
         QuestionsComponent,
         RealtimeQuestionComponent,
-        EditTimelineComponent
+        EditTimelineComponent,
+        NavigationEventComponent
     ],
     providers: [
         ControlEventService,

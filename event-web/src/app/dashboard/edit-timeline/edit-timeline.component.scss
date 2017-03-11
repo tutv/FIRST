@@ -2,10 +2,21 @@
 
 .timeline {
     position: relative;
+    color: #ccc ;
 
     .name {
         font-size: 20px;
         font-weight: bold;
+    }
+
+    &.online {
+        color: #333;
+
+        &.active {
+            .name {
+                color: $brand-success;
+            }
+        }
     }
 
     .enable {
