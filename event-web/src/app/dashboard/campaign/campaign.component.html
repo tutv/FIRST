@@ -1,5 +1,7 @@
-<div class="campaign-wrapper">
+<div class="campaign-wrapper" id="event-detail">
     <div class="detail" *ngIf="event">
+        <mk-navigation-event></mk-navigation-event>
+
         <div class="event-header">
             <div class="banner">
                 <img [src]="event.banner" alt="Banner" class="img-fluid">

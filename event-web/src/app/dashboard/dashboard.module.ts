@@ -46,9 +46,8 @@ import {QuestionsComponent} from './questions/questions.component';
 import {RealtimeQuestionComponent} from './realtime-question/realtime-question.component';
 
 import {ChartsModule} from 'ng2-charts/ng2-charts';
-import { EditTimelineComponent } from './edit-timeline/edit-timeline.component';
-import { NavigationEventComponent } from './navigation-event/navigation-event.component';
-
+import {EditTimelineComponent} from './edit-timeline/edit-timeline.component';
+import {NavigationEventComponent} from './navigation-event/navigation-event.component';
 
 @NgModule({
     imports: [

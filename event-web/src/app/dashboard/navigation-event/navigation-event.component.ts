@@ -13,4 +13,13 @@ export class NavigationEventComponent implements OnInit {
     ngOnInit() {
     }
 
+    onClick(target) {
+        this.scrollElement(target);
+    }
+
+    public scrollElement(target) {
+        let element = document.getElementById(target);
+        window.scrollTo(0, element.offsetTop);
+    }
+
 }

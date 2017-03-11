@@ -1,3 +1,26 @@
-<p>
-    navigation-event works!
-</p>
+<div class="navigation-event">
+    <div class="wrapper">
+        <ul class="controls">
+            <li class="control" (click)="onClick('event-detail')">
+                <a><i class="fa fa-hand-o-up" aria-hidden="true"></i>
+                </a>
+            </li>
+
+            <li class="control" (click)="onClick('overview')">
+                <a><i class="fa fa-search" aria-hidden="true"></i></a>
+            </li>
+
+            <li class="control" (click)="onClick('map')">
+                <a><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+            </li>
+
+            <li class="control" (click)="onClick('agenda')">
+                <a><i class="fa fa-calendar" aria-hidden="true"></i></a>
+            </li>
+
+            <li class="control" (click)="onClick('quick-questions')">
+                <a><i class="fa fa-question" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
