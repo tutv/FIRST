@@ -65,7 +65,7 @@ export class RealtimeQuestionComponent implements OnInit, OnDestroy {
         this.path = path;
         this.fetchQuestion();
         this.modal.show();
-        this.helperSrv.toggleFullScreen();
+        this.helperSrv.openFullScreen();
     }
 
     close() {

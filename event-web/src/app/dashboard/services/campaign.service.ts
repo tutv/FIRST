@@ -54,6 +54,12 @@ export class CampaignService {
         return this.firebaseDB.object(questionPaths + '/' + key);
     }
 
+    public removeQuestion(event_id: string, question_id: string) {
+        let path = this.path + '/' + event_id + '/questions/' + question_id;
+
+        return this.firebaseDB.object(path).remove();
+    }
+
     public pushQuestion(data) {
         let args = {
             method: 'POST',

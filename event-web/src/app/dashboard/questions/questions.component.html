@@ -2,7 +2,7 @@
     <div class="question my-2" *ngFor="let question of questions">
         <h3 class="h5">{{question.content}}
 
-            <span class="close float-xs-right">&times;</span>
+            <span (click)="onClickRemoveQuestion(question.$key)" class="close float-xs-right">&times;</span>
         </h3>
 
         <button class="btn btn-primary btn-sm" (click)="onClickPushQuestion($event, question)">Gửi và xem</button>

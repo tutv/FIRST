@@ -29,22 +29,7 @@ export class HelperService {
 
     public toggleFullScreen(): boolean {
         if (!this.isFullScreen()) {
-            let doc: any = document.documentElement;
-            if (doc.requestFullscreen) {
-                return doc.requestFullscreen();
-            }
-
-            if (doc.mozRequestFullScreen) {
-                return doc.mozRequestFullScreen();
-            }
-
-            if (doc.webkitRequestFullscreen) {
-                return doc.webkitRequestFullscreen();
-            }
-
-            if (doc.msRequestFullscreen) {
-                return doc.msRequestFullscreen();
-            }
+            return this.openFullScreen();
         }
 
         let d: any = document;
@@ -57,6 +42,25 @@ export class HelperService {
             d.mozCancelFullScreen();
         } else if (d.webkitExitFullscreen) {
             d.webkitExitFullscreen();
+        }
+    }
+
+    public openFullScreen() {
+        let doc: any = document.documentElement;
+        if (doc.requestFullscreen) {
+            return doc.requestFullscreen();
+        }
+
+        if (doc.mozRequestFullScreen) {
+            return doc.mozRequestFullScreen();
+        }
+
+        if (doc.webkitRequestFullscreen) {
+            return doc.webkitRequestFullscreen();
+        }
+
+        if (doc.msRequestFullscreen) {
+            return doc.msRequestFullscreen();
         }
     }
 }

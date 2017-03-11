@@ -68,6 +68,11 @@ export class QuestionsComponent implements OnInit {
             );
     }
 
+    onClickRemoveQuestion(key:string) {
+        this.campaignSrv.removeQuestion(this.eventId, key)
+            .then();
+    }
+
     fetchQuestions() {
         this.campaignSrv.getQuestions(this.eventId)
             .subscribe(
