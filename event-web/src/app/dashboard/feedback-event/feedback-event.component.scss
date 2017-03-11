@@ -11,6 +11,11 @@
     padding: 2px;
     cursor: pointer;
     font-size: 21px;
+    transition: all 200ms ease-out;
+
+    &.change {
+        font-size: 24px;
+    }
 
     &:hover {
         color: $brand-success;

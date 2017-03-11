@@ -11,7 +11,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title pull-left">Phan hoi tu nguoi dung</h4>
+                <h4 class="modal-title pull-left">Đánh giá ({{average | number:'1.0-1'}})</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -22,7 +22,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <mk-star-rating [number]="feed.star"></mk-star-rating>
-                                boi {{feed.email}}
+                                bởi <span class="font-weight-bold">{{feed.email}}</span>
                             </div>
 
                             <div class="card-block">

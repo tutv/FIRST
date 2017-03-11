@@ -14,6 +14,8 @@ export class FeedbackEventComponent implements OnInit, OnChanges {
 
     private feedbacks: Array<MkFeedback> = [];
 
+    private average: number = 0;
+
     constructor() {
     }
 
@@ -31,13 +33,18 @@ export class FeedbackEventComponent implements OnInit, OnChanges {
 
         let keys = Object.keys(this.feedback);
 
+        let sum = 0;
         for (let i = 0; i < keys.length; i++) {
             let $key = keys[i];
             let feedback = this.feedback[$key];
             feedback.$key = $key;
 
+            sum += feedback.star || 0;
+
             this.feedbacks.push(feedback);
         }
+
+        this.average = sum / this.feedbacks.length;
     }
 
     close() {
