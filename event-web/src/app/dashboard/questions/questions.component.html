@@ -1,13 +1,73 @@
-<p>
-    questions works!
-</p>
-
 <div class="questions">
     <div class="question" *ngFor="let question of questions">
-        {{question.$key}}
+        <h3 class="h5">{{question.content}}
+
+            <span class="close float-xs-right">&times;</span>
+        </h3>
+
+        <button class="btn btn-primary btn-sm" (click)="onClickPushQuestion($event, question)">Gửi</button>
     </div>
 </div>
 
-<form>
-    <button class="btn btn-primary">Thêm câu hỏi</button>
+<mk-realtime-question #realtimeQuestion></mk-realtime-question>
+
+<form class="my-2">
+    <button class="btn btn-primary" (click)="open()">Thêm câu hỏi</button>
 </form>
+
+<div bsModal #modal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Thêm câu hỏi</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modal.hide()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Câu hỏi</label>
+                        <textarea rows="2" class="form-control" placeholder="Eg: UET Hackathon 2017"
+                                  name="event-name" type="text"
+                                  id="question-content" [(ngModel)]="newQuestion.content"></textarea>
+                    </div>
+
+                    <div class="choices">
+                        <label>Câu trả lời</label>
+
+                        <input class="form-control my-1"
+                               type="text"
+                               name="choice[0]"
+                               title="trả lời"
+                               [(ngModel)]="newQuestion.as1">
+
+                        <input class="form-control my-1"
+                               type="text"
+                               name="choice[1]"
+                               title="trả lời"
+                               [(ngModel)]="newQuestion.as2">
+
+                        <input class="form-control my-1"
+                               type="text"
+                               name="choice[2]"
+                               title="trả lời"
+                               [(ngModel)]="newQuestion.as3">
+
+                        <input class="form-control my-1"
+                               type="text"
+                               name="choice[3]"
+                               title="trả lời"
+                               [(ngModel)]="newQuestion.as4">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary pull-left" (click)="modal.hide()">Hủy</button>
+                    <button type="submit" class="btn btn-primary" (click)="onClickCreate($event)">Thêm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

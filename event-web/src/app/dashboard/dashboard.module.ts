@@ -40,9 +40,13 @@ import {ListTemplatesComponent} from "./list-templates/list-templates.component"
 import {EventService} from "./services/event.service";
 import {EmailCampaignComponent} from './campaign/email-campaign/email-campaign.component';
 import {EmailEditorComponent} from './email-editor/email-editor.component';
-import { ListEmailTemplatesComponent } from './list-email-templates/list-email-templates.component';
-import { QrCodeComponent } from './qr-code/qr-code.component';
-import { QuestionsComponent } from './questions/questions.component';
+import {ListEmailTemplatesComponent} from './list-email-templates/list-email-templates.component';
+import {QrCodeComponent} from './qr-code/qr-code.component';
+import {QuestionsComponent} from './questions/questions.component';
+import {RealtimeQuestionComponent} from './realtime-question/realtime-question.component';
+
+import {ChartsModule} from 'ng2-charts/ng2-charts';
+
 
 @NgModule({
     imports: [
@@ -55,7 +59,8 @@ import { QuestionsComponent } from './questions/questions.component';
         ModalModule.forRoot(),
         DropdownModule.forRoot(),
         TooltipModule.forRoot(),
-        ImageUploadModule.forRoot()
+        ImageUploadModule.forRoot(),
+        ChartsModule
     ],
     declarations: [
         CampaignsComponent,
@@ -90,7 +95,8 @@ import { QuestionsComponent } from './questions/questions.component';
         EmailEditorComponent,
         ListEmailTemplatesComponent,
         QrCodeComponent,
-        QuestionsComponent
+        QuestionsComponent,
+        RealtimeQuestionComponent
     ],
     providers: [
         ControlEventService,

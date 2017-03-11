@@ -19,6 +19,14 @@ export class CampaignService {
         this.events = this.firebaseDB.list(this.path);
     }
 
+    public object(path: string): Observable<any> {
+        return this.firebaseDB.object(path);
+    }
+
+    public array(path: string): Observable<any> {
+        return this.firebaseDB.list(path);
+    }
+
     public list(): Observable<any> {
         return this.firebaseDB.list(this.path);
     }
@@ -37,6 +45,13 @@ export class CampaignService {
 
     public getQuestions(id: string): Observable<any> {
         return this.firebaseDB.list(this.path + '/' + id + '/questions');
+    }
+
+    public createQuestion(id: string, data: any): Observable<any> {
+        let questionPaths = this.path + '/' + id + '/questions';
+        let key = this.firebaseDB.list(questionPaths).push(data).key;
+
+        return this.firebaseDB.object(questionPaths + '/' + key);
     }
 
     public deleteC(id: string): Observable<any> {
