@@ -12,7 +12,14 @@ import {HelperService} from "../../services/helper.service";
 })
 export class RealtimeQuestionComponent implements OnInit, OnDestroy {
     public barChartOptions: any = {
-        responsive: false
+        responsive: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
     };
 
     public barChartLabels: string[] = [];
@@ -83,8 +90,6 @@ export class RealtimeQuestionComponent implements OnInit, OnDestroy {
     }
 
     renderChart() {
-        this.barChartLabels = [this.question.as1, this.question.as2, this.question.as3, this.question.as4];
-
         let stats = this.question.stats;
         let data = [0, 0, 0, 0];
         if (stats) {
@@ -100,6 +105,13 @@ export class RealtimeQuestionComponent implements OnInit, OnDestroy {
 
         this.barChartData = [
             {data: data, label: this.question.content}
+        ];
+
+        this.barChartLabels = [
+            this.question.as1,
+            this.question.as2,
+            this.question.as3,
+            this.question.as4
         ];
     }
 }
