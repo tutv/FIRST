@@ -1,6 +1,6 @@
 <div class="feedback-wrapper">
     <div class="icon" (click)="open()">
-        <div class="number">{{feedbacks.length}}</div>
+        <div class="number" *ngIf="feedbacks.length">{{feedbacks.length}}</div>
         <i class="fa fa-envelope-o" aria-hidden="true"></i>
     </div>
 </div>

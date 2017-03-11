@@ -2,7 +2,11 @@
 
 .timeline {
     position: relative;
-    color: #ccc ;
+    color: #999;
+
+    &.active {
+        color: #696969;
+    }
 
     .name {
         font-size: 20px;
