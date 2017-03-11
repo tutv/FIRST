@@ -3,6 +3,7 @@ import {ModalDirective} from "ng2-bootstrap";
 import {CampaignService} from "../services/campaign.service";
 import {StorageService} from "../../services/storage.service";
 import {Router} from "@angular/router";
+import {MkCampaign} from "../../classes/mk-campaign";
 
 @Component({
     selector: 'app-new-campaign',
@@ -16,7 +17,8 @@ export class NewCampaignComponent implements OnInit, OnChanges {
 
     private event: any = {
         name: '',
-        status: 'Publish'
+        status: 'Publish',
+        overview: ''
     };
 
     constructor(private campaignSrv: CampaignService,

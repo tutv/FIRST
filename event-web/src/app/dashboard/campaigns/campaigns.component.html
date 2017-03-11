@@ -21,21 +21,23 @@
         </ul>
     </header>
 
-    <div class="list-campaigns row">
+    <div class="list-campaigns">
         <mk-loading [toggle]="loading"></mk-loading>
 
-        <div class="col-md-4" *ngFor="let event of campaignsFiltered()">
-            <div class="card campaign" [ngClass]="event.status == 'Publish' ? 'card-accent-success' : ''">
-                <div class="status" [ngClass]="event.status | lowercase">
-                    {{event.status}}
-                </div>
-                <a [routerLink]="['/a/events/' + event.$key]">
-                    <img class="card-img-top img-fluid" src="./assets/images/screeshot.png" alt="Card image cap">
-                </a>
-                <div class="card-block">
-                    <h3 class="card-title py-1 text-xs-center">{{event.name}}</h3>
-                    <div class="stat">
-                        <div class="h6"><i class="fa fa-map-marker" aria-hidden="true"></i> {{event.place}}</div>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let event of campaignsFiltered()">
+                <div class="card campaign" [ngClass]="event.status == 'Publish' ? 'card-accent-success' : ''">
+                    <div class="status" [ngClass]="event.status | lowercase">
+                        {{event.status}}
+                    </div>
+                    <a [routerLink]="['/a/events/' + event.$key]">
+                        <img class="card-img-top img-fluid" src="./assets/images/screeshot.png" alt="Card image cap">
+                    </a>
+                    <div class="card-block">
+                        <h3 class="card-title py-1">{{event.name}}</h3>
+                        <div class="stat">
+                            <div class="h6"><i class="fa fa-map-marker" aria-hidden="true"></i> {{event.place}}</div>
+                        </div>
                     </div>
                 </div>
             </div>

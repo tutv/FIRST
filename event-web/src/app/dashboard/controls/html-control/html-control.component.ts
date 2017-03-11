@@ -51,7 +51,7 @@ export class HtmlControlComponent implements OnInit, OnDestroy, OnChanges, After
 
         tinymce.init({
             selector: '#' + this.elementId,
-            plugins: ['link', 'textcolor', 'colorpicker'],
+            plugins: ['link', 'textcolor', 'colorpicker', 'autoresize'],
             skin_url: '/assets/skins/lightgray',
             toolbar: [
                 'formatselect | alignleft aligncenter alignright | link | forecolor backcolor | removeformat',

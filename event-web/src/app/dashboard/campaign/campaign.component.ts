@@ -3,6 +3,7 @@ import {CampaignService} from "../services/campaign.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MkCampaign} from "../../classes/mk-campaign";
 import {Title} from "@angular/platform-browser";
+import {MkUser} from "../../classes/mk-user";
 
 @Component({
     selector: 'app-campaign',
@@ -14,7 +15,11 @@ export class CampaignComponent implements OnInit {
     public id: string = '';
     public event: MkCampaign = null;
 
+    public users: Array<MkUser> = [];
+
     private loading: boolean = true;
+
+    private editingOverview: boolean = false;
 
     constructor(private campaignSrv: CampaignService,
                 private activatedRoute: ActivatedRoute,
@@ -32,6 +37,18 @@ export class CampaignComponent implements OnInit {
 
     onUpdatePlace(place) {
         this.update({place});
+    }
+
+    onClickSaveOverview() {
+        this.editingOverview = false;
+
+        this.update({
+            overview: this.event.overview
+        });
+    }
+
+    onClickEditOverview() {
+        this.editingOverview = true;
     }
 
     update(data) {
@@ -66,6 +83,13 @@ export class CampaignComponent implements OnInit {
                     this.loading = false;
                     this.event = event;
                     this.updateTitle();
+                }
+            );
+
+        this.campaignSrv.getUsers(this.id)
+            .subscribe(
+                (users) => {
+                    this.users = users;
                 }
             );
     }

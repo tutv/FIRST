@@ -42,6 +42,7 @@ import {EmailCampaignComponent} from './campaign/email-campaign/email-campaign.c
 import {EmailEditorComponent} from './email-editor/email-editor.component';
 import { ListEmailTemplatesComponent } from './list-email-templates/list-email-templates.component';
 import { QrCodeComponent } from './qr-code/qr-code.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 @NgModule({
     imports: [
@@ -88,7 +89,8 @@ import { QrCodeComponent } from './qr-code/qr-code.component';
         EmailCampaignComponent,
         EmailEditorComponent,
         ListEmailTemplatesComponent,
-        QrCodeComponent
+        QrCodeComponent,
+        QuestionsComponent
     ],
     providers: [
         ControlEventService,

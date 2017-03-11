@@ -9,28 +9,73 @@
                 </div>
             </div>
 
-            <div class="h3 name py-1">
-                <app-text-editable [content]="event.name"
-                                   (update)="onUpdateName($event)">
-                </app-text-editable>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="h3 name py-1">
+                        <app-text-editable [content]="event.name"
+                                           (update)="onUpdateName($event)">
+                        </app-text-editable>
+                    </div>
+
+                    <div class="place h5">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+                        <app-text-editable [content]="event.place"
+                                           (update)="onUpdatePlace($event)">
+                        </app-text-editable>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="number-users float-xs-right base-middle">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+
+                        <span class="h4 mb-0">{{users.length}}</span>
+                    </div>
+                </div>
             </div>
+        </div>
 
-            <div class="place h5">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
+        <div class="card descriptions my-2">
+            <div class="card-header">Thông tin tổng quan
 
-                <app-text-editable [content]="event.place"
-                                   (update)="onUpdatePlace($event)">
-                </app-text-editable>
+                <button class="btn btn-sm btn-primary mx-1" *ngIf="editingOverview"
+                        (click)="onClickSaveOverview($event)">Lưu lại
+                </button>
+
+                <button class="btn btn-sm btn-primary mx-1" *ngIf="!editingOverview"
+                        (click)="onClickEditOverview($event)">Sửa
+                </button>
+            </div>
+            <div class="card-block">
+                <div class="content" *ngIf="!editingOverview" [innerHTML]="event.overview">
+                </div>
+
+                <app-html-control *ngIf="editingOverview" [(content)]="event.overview"></app-html-control>
+            </div>
+        </div>
+
+        <div class="card maps my-2">
+            <div class="card-header">Bản đồ</div>
+            <div class="card-block">
+                <img [src]="event.map">
             </div>
         </div>
 
         <div class="card timeline my-2">
-            <div class="card-header">Agenda</div>
+            <div class="card-header">Lịch trình</div>
             <div class="card-block">
 
             </div>
         </div>
+
+        <div class="card questions my-2">
+            <div class="card-header">Câu hỏi nhanh</div>
+            <div class="card-block">
+                <mk-questions [eventId]="id"></mk-questions>
+            </div>
+        </div>
     </div>
 
-    <mk-loading [toggle]="loading"></mk-loading>
+    <mk-loading [toggle]="loading" [title]="'Đang tải thông tin sự kiện...'"></mk-loading>
 </div>
