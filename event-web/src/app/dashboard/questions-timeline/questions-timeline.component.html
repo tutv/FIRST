@@ -1,7 +1,7 @@
 <div class="feedback-wrapper">
-    <div class="icon" (click)="open()" title="Đánh giá từ người tham gia">
-        <div class="number" *ngIf="feedbacks.length">{{feedbacks.length}}</div>
-        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+    <div class="icon" (click)="open()" title="Câu hỏi từ người tham gia">
+        <div class="number" *ngIf="lists.length">{{lists.length}}</div>
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
     </div>
 </div>
 
@@ -11,22 +11,21 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title pull-left">Đánh giá ({{average | number:'1.0-1'}})</h4>
+                <h4 class="modal-title pull-left">Câu hỏi ({{lists.length}})</h4>
                 <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="list-feedbacks">
-                    <div class="feedback" *ngFor="let feed of feedbacks">
+                    <div class="feedback" *ngFor="let q of lists">
                         <div class="card">
                             <div class="card-header">
-                                <mk-star-rating [number]="feed.star"></mk-star-rating>
-                                bởi <span class="font-weight-bold">{{feed.email}}</span>
+                                Gửi bởi <span class="font-weight-bold">{{q.email}}</span>
                             </div>
 
                             <div class="card-block">
-                                {{feed.content}}
+                                {{q.content}}
                             </div>
                         </div>
                     </div>

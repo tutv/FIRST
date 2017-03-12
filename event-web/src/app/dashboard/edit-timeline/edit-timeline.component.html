@@ -8,6 +8,10 @@
             <mk-feedback-event [feedback]="tl.feedback"></mk-feedback-event>
         </div>
 
+        <div class="questions">
+            <mk-questions-timeline [questions]="tl.questions"></mk-questions-timeline>
+        </div>
+
         <div class="enable" [class.active]="tl.enabled" (click)="onToggleEnable(i, $event)">
             <i class="fa fa-check" aria-hidden="true"></i>
         </div>
