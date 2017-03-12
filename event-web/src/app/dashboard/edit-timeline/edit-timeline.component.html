@@ -9,7 +9,8 @@
         </div>
 
         <div class="questions">
-            <mk-questions-timeline [questions]="tl.questions"></mk-questions-timeline>
+            <mk-questions-timeline [index]="i" [eventId]="eventId"
+                                   (resolve)="onResolveQuestion($event)"></mk-questions-timeline>
         </div>
 
         <div class="enable" [class.active]="tl.enabled" (click)="onToggleEnable(i, $event)">

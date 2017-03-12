@@ -30,6 +30,12 @@ export class EditTimelineComponent implements OnInit {
             );
     }
 
+    onResolveQuestion(args: any) {
+        let {$key, index} = args;
+
+        this.onUpdate(index, 'questions/' + $key + '/resolve', true);
+    }
+
     onUpdateName(index: number, name: string) {
         this.onUpdate(index, 'name', name);
     }

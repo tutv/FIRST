@@ -19,9 +19,13 @@
             <div class="modal-body">
                 <div class="list-feedbacks">
                     <div class="feedback" *ngFor="let q of lists">
-                        <div class="card">
+                        <div class="card" [class.card-accent-success]="q.resolve">
                             <div class="card-header">
                                 Gửi bởi <span class="font-weight-bold">{{q.email}}</span>
+
+                                <button *ngIf="!q.resolve" (click)="onClickResolve($event, q.$key)"
+                                        class="btn btn-sm btn-default float-xs-right">Đánh dấu trả lời
+                                </button>
                             </div>
 
                             <div class="card-block">

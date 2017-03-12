@@ -1,43 +1,51 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, OnInit, Input, ViewChild, Output, EventEmitter} from '@angular/core';
 import {MkQuestionTimeLine} from "../../classes/mk-question-timeline";
 import {ModalDirective} from "ng2-bootstrap";
+import {CampaignService} from "../services/campaign.service";
 
 @Component({
     selector: 'mk-questions-timeline',
     templateUrl: './questions-timeline.component.html',
-    styleUrls: ['./questions-timeline.component.scss']
+    styleUrls: ['./questions-timeline.component.scss'],
+    providers: [CampaignService]
 })
 export class QuestionsTimelineComponent implements OnInit {
     @ViewChild('modal') public modal: ModalDirective;
+    @Input() index: number;
+    @Input() eventId: string;
 
-    @Input() questions: Array<any>;
+    @Output() resolve = new EventEmitter<any>();
 
     public lists: Array<MkQuestionTimeLine> = [];
 
-    constructor() {
+    constructor(private campaignSrv: CampaignService) {
     }
 
     ngOnInit() {
+        this.fetchQuestions()
     }
 
-    ngOnChanges() {
-        this.convertToArray();
+    fetchQuestions() {
+        this.campaignSrv.getQuestionsTimeline(this.eventId, this.index)
+            .subscribe(
+                questions => {
+                    this.lists = questions;
+                }
+            );
     }
 
-    convertToArray() {
-        if (!this.questions) {
+    onClickResolve($event: Event, $key: string) {
+        $event.preventDefault();
+
+        this.resolveQuestion($key);
+    }
+
+    resolveQuestion($key: string) {
+        if (!this.index) {
             return;
         }
 
-        let keys = Object.keys(this.questions);
-
-        for (let i = 0; i < keys.length; i++) {
-            let $key = keys[i];
-            let q = this.questions[$key];
-            q.$key = $key;
-
-            this.lists.push(q);
-        }
+        this.resolve.next({$key, index: this.index});
     }
 
     close() {
@@ -50,5 +58,4 @@ export class QuestionsTimelineComponent implements OnInit {
         }
         this.modal.show();
     }
-
 }
