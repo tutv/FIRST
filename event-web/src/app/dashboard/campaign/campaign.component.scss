@@ -29,11 +29,27 @@
 .number-users {
     width: 200px;
     height: 100px;
-    text-align: right;
+    text-align: left;
     font-size: 20px;
     position: absolute;
     bottom: 20px;
     right: 20px;
+
+    .card-block {
+        position: relative;
+
+        .export-users {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            cursor: pointer;
+            display: none;
+
+            &:hover {
+                color: $brand-success;
+            }
+        }
+    }
 
     small {
         font-size: 12px;

@@ -31,6 +31,10 @@ export class CampaignComponent implements OnInit {
         this.captureParams();
     }
 
+    onClickExportUsers() {
+
+    }
+
     onUpdateTimelines(timelines: any) {
         this.campaignSrv.updateTimelines(this.id, timelines)
             .then();

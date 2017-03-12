@@ -1,7 +1,7 @@
 <div class="qr-wrapper">
     <img [src]="url" [alt]="data">
 
-    <div class="icon" (click)="onClickPrint($event)">
-        <i class="fa fa-print" aria-hidden="true"></i>
-    </div>
+    <a class="icon" [download]="url" [href]="url" target="_blank">
+        <i class="fa fa fa-cloud-download" aria-hidden="true"></i>
+    </a>
 </div>

@@ -13,7 +13,10 @@
                 <div class="number-users">
                     <div class="card">
                         <div class="card-block">
-                            <div class="h4 mb-0 text-info">{{users.length}}</div>
+                            <span class="export-users" (click)="onClickExportUsers($event)"><i
+                                    class="fa fa-cloud-download" aria-hidden="true"></i></span>
+
+                            <div class="h2 mb-0 text-info font-weight-bold">{{users.length}}</div>
                             <small class="text-muted text-uppercase font-weight-bold">Người tham gia</small>
                         </div>
                     </div>
