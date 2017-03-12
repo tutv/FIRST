@@ -52,6 +52,7 @@ import { FeedbackEventComponent } from './feedback-event/feedback-event.componen
 import { StarRatingComponent } from './star-rating/star-rating.component';
 import { CreateNotifyComponent } from './create-notify/create-notify.component';
 import { QuestionsTimelineComponent } from './questions-timeline/questions-timeline.component';
+import { UsersEventComponent } from './users-event/users-event.component';
 
 @NgModule({
     imports: [
@@ -107,7 +108,8 @@ import { QuestionsTimelineComponent } from './questions-timeline/questions-timel
         FeedbackEventComponent,
         StarRatingComponent,
         CreateNotifyComponent,
-        QuestionsTimelineComponent
+        QuestionsTimelineComponent,
+        UsersEventComponent
     ],
     providers: [
         ControlEventService,

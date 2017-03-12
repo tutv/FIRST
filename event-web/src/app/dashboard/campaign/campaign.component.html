@@ -2,6 +2,8 @@
     <div class="detail" *ngIf="event">
         <mk-navigation-event [eventId]="id"></mk-navigation-event>
 
+        <mk-users-event [users]="users" #user_event></mk-users-event>
+
         <div class="event-header">
             <div class="banner">
                 <img [src]="event.banner" alt="Banner" class="img-fluid">
@@ -13,8 +15,9 @@
                 <div class="number-users">
                     <div class="card">
                         <div class="card-block">
-                            <span class="export-users" (click)="onClickExportUsers($event)"><i
-                                    class="fa fa-cloud-download" aria-hidden="true"></i></span>
+                            <span class="export-users" (click)="onClickExportUsers($event)">
+                                <i class="fa fa-eye" aria-hidden="true"></i>
+                            </span>
 
                             <div class="h2 mb-0 text-info font-weight-bold">{{users.length}}</div>
                             <small class="text-muted text-uppercase font-weight-bold">Người tham gia</small>

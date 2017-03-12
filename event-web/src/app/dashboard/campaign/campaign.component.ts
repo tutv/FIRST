@@ -1,9 +1,10 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {CampaignService} from "../services/campaign.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MkCampaign} from "../../classes/mk-campaign";
 import {Title} from "@angular/platform-browser";
 import {MkUser} from "../../classes/mk-user";
+import {UsersEventComponent} from "../users-event/users-event.component";
 
 @Component({
     selector: 'app-campaign',
@@ -21,6 +22,8 @@ export class CampaignComponent implements OnInit {
 
     private editingOverview: boolean = false;
 
+    @ViewChild('user_event') public user_event: UsersEventComponent;
+
     constructor(private campaignSrv: CampaignService,
                 private activatedRoute: ActivatedRoute,
                 private title: Title,
@@ -32,7 +35,7 @@ export class CampaignComponent implements OnInit {
     }
 
     onClickExportUsers() {
-
+        this.user_event.open();
     }
 
     onUpdateTimelines(args: any) {

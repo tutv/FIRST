@@ -35,15 +35,20 @@
     bottom: 20px;
     right: 20px;
 
+    &:hover {
+        .export-users {
+            display: inline-block;
+        }
+    }
+
     .card-block {
         position: relative;
 
         .export-users {
             position: absolute;
             top: 16px;
-            right: 20px;
+            left: 20px;
             cursor: pointer;
-            display: none;
 
             &:hover {
                 color: $brand-primary;
