@@ -1,6 +1,11 @@
 <div class="navigation-event">
     <div class="wrapper">
         <ul class="controls">
+            <li class="control" (click)="onClickCreateNotify($event)">
+                <a><i class="fa fa-bullhorn" aria-hidden="true"></i>
+                </a>
+            </li>
+
             <li class="control" (click)="onClick('event-detail')">
                 <a><i class="fa fa-hand-o-up" aria-hidden="true"></i>
                 </a>
@@ -24,3 +29,5 @@
         </ul>
     </div>
 </div>
+
+<mk-create-notify #notify></mk-create-notify>

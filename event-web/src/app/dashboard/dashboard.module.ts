@@ -50,6 +50,7 @@ import {EditTimelineComponent} from './edit-timeline/edit-timeline.component';
 import {NavigationEventComponent} from './navigation-event/navigation-event.component';
 import { FeedbackEventComponent } from './feedback-event/feedback-event.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { CreateNotifyComponent } from './create-notify/create-notify.component';
 
 @NgModule({
     imports: [
@@ -103,7 +104,8 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
         EditTimelineComponent,
         NavigationEventComponent,
         FeedbackEventComponent,
-        StarRatingComponent
+        StarRatingComponent,
+        CreateNotifyComponent
     ],
     providers: [
         ControlEventService,
