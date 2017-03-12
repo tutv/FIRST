@@ -18,6 +18,6 @@ export class QrCodeComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
-        this.url = `https://api.qrserver.com/v1/create-qr-code/?size=${this.size}&data=${this.data}`;
+        this.url = `https://chart.googleapis.com/chart?cht=qr&choe=UTF-8&chs=${this.size}&chld=H&chl=${this.data}`;
     }
 }
