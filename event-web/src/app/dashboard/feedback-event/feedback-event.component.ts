@@ -45,8 +45,6 @@ export class FeedbackEventComponent implements OnInit, OnChanges {
         }
 
         this.average = sum / this.feedbacks.length;
-
-        console.log(this.feedbacks);
     }
 
     close() {

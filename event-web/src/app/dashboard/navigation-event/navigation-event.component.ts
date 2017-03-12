@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {CreateNotifyComponent} from "../create-notify/create-notify.component";
 
 @Component({
@@ -8,6 +8,8 @@ import {CreateNotifyComponent} from "../create-notify/create-notify.component";
 })
 export class NavigationEventComponent implements OnInit {
     @ViewChild('notify') public notify: CreateNotifyComponent;
+
+    @Input() public eventId: string;
 
     constructor() {
     }

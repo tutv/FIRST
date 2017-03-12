@@ -19,6 +19,20 @@ export class CampaignService {
         this.events = this.firebaseDB.list(this.path);
     }
 
+    public sendNotification(event_id: string, title: string, content: string): Observable<any> {
+        let args = {
+            method: 'POST',
+            url: '/sendnoti',
+            data: {
+                event_id,
+                title,
+                content
+            }
+        };
+
+        return this.apiSrv.request(args);
+    }
+
     public updateTimelines(event_id: string, data: any) {
         let path = this.path + '/' + event_id + '/timelines';
 
