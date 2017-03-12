@@ -25,10 +25,17 @@
             cursor: pointer;
             transition: 200ms all ease-out;
 
+            &.send-notification {
+                background-color: $brand-danger;
+                color: #fff;
+            }
+
             &:hover {
                 background-color: $brand-success;
                 color: #fff;
             }
+
+
         }
     }
 }
