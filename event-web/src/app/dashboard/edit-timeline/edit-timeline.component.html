@@ -21,9 +21,16 @@
             <app-text-editable [content]="tl.name" (update)="onUpdateName(i, $event)"></app-text-editable>
         </div>
 
-        <div class="place mb-1">
+        <div class="place">
             <i class="fa fa-map-marker" aria-hidden="true"></i>
             <app-text-editable [content]="tl.place" (update)="onUpdatePlace(i, $event)"></app-text-editable>
+        </div>
+
+
+        <div class="place mb-1">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span>{{tl.start_time | date: 'medium'}}</span> -
+            <span>{{tl.end_time | date: 'medium'}}</span>
         </div>
 
         <div class="form-group">
