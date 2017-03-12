@@ -33,10 +33,11 @@ export class CampaignService {
         return this.apiSrv.request(args);
     }
 
-    public updateTimelines(event_id: string, data: any) {
-        let path = this.path + '/' + event_id + '/timelines';
+    public updateTimelines(event_id: string, index: number, key: string, value: any) {
 
-        return this.firebaseDB.object(path).set(data);
+        let path = this.path + '/' + event_id + '/timelines/' + index + '/' + key;
+
+        return this.firebaseDB.object(path).set(value);
     }
 
     public getTimelines(event_id: string): Observable<any> {

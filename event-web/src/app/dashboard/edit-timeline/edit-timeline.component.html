@@ -1,7 +1,7 @@
 <div class="timelines-wrapper mb-2">
     <div class="tick"></div>
 
-    <div class="timeline mb-1" *ngFor="let tl of timelines; let i = index"
+    <div class="timeline mb-3" *ngFor="let tl of timelines; let i = index"
          [class.active]="tl.enabled"
          [class.online]="tl.is_online">
         <div class="feedbacks">
@@ -22,15 +22,8 @@
         </div>
 
         <div class="form-group">
-            <textarea title="description"
-                      class="form-control"
-                      name="description"
-                      [(ngModel)]="tl.description"></textarea>
+            <app-text-editable [content]="tl.description" (update)="onUpdateDescription(i, $event)"></app-text-editable>
         </div>
 
     </div>
-</div>
-
-<div class="form-group">
-    <button class="btn btn-success" (click)="onClickUpdate($event)">Cập nhật</button>
 </div>

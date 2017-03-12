@@ -31,26 +31,29 @@ export class EditTimelineComponent implements OnInit {
     }
 
     onUpdateName(index: number, name: string) {
-        this.timelines[index].name = name;
-        this.onUpdate();
+        this.onUpdate(index, 'name', name);
     }
 
     onUpdatePlace(index: number, place: string) {
-        this.timelines[index].place = place;
-        this.onUpdate();
+        this.onUpdate(index, 'place', place);
+    }
+
+    onUpdateDescription(index: number, description: string) {
+        this.onUpdate(index, 'description', description);
     }
 
     onToggleEnable(index: number) {
-        this.timelines[index].enabled = !this.timelines[index].enabled;
-        this.onUpdate();
+        this.onUpdate(index, 'enabled', !this.timelines[index].enabled);
     }
 
-    onClickUpdate($event: Event) {
-        $event.preventDefault();
-        this.onUpdate();
-    }
+    onUpdate(index: number, key: string, value: any) {
+        let data = this.timelines;
 
-    onUpdate() {
-        this.update.next(this.timelines);
+        let temp = [];
+        for (let i = 0; i < data.length; i++) {
+            temp.push(data[i]);
+        }
+
+        this.update.next({index, key, value});
     }
 }

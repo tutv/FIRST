@@ -12,7 +12,7 @@
 
 <mk-realtime-question #realtimeQuestion></mk-realtime-question>
 
-<form class="my-3">
+<form class="my-1">
     <button class="btn btn-success" (click)="open()">Thêm câu hỏi</button>
 </form>
 
@@ -65,7 +65,10 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" (click)="onClickCreate($event)">Thêm</button>
+                    <button type="submit" [disabled]="!newQuestion.content.length"
+                            class="btn btn-primary"
+                            (click)="onClickCreate($event)">Thêm
+                    </button>
                 </div>
             </form>
         </div>

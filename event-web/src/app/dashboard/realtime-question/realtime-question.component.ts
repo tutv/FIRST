@@ -41,6 +41,8 @@ export class RealtimeQuestionComponent implements OnInit, OnDestroy {
 
     private viewChart: boolean = false;
 
+    private numberAnswers: number = 0;
+
     constructor(private campaignSrv: CampaignService,
                 private helperSrv: HelperService,
                 private eventSrv: EventService) {
@@ -84,6 +86,7 @@ export class RealtimeQuestionComponent implements OnInit, OnDestroy {
             .subscribe(
                 question => {
                     this.question = question;
+
                     this.renderChart();
                 }
             );
@@ -113,5 +116,14 @@ export class RealtimeQuestionComponent implements OnInit, OnDestroy {
             this.question.as3,
             this.question.as4
         ];
+
+        this.count(data);
+    }
+
+    count(data: Array<number>) {
+        this.numberAnswers = 0;
+        for (let i = 0; i < data.length; i++) {
+            this.numberAnswers += data[i];
+        }
     }
 }

@@ -26,6 +26,8 @@ export class QuestionsComponent implements OnInit {
         as4: 'Lựa chọn 4',
     };
 
+    public numberAnswers: number = 0;
+
     constructor(private campaignSrv: CampaignService) {
     }
 

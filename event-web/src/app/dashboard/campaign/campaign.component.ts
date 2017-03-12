@@ -35,8 +35,10 @@ export class CampaignComponent implements OnInit {
 
     }
 
-    onUpdateTimelines(timelines: any) {
-        this.campaignSrv.updateTimelines(this.id, timelines)
+    onUpdateTimelines(args: any) {
+        let {index, key, value} = args;
+
+        this.campaignSrv.updateTimelines(this.id, index, key, value)
             .then();
     }
 
